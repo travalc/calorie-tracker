@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { firebaseApp } from '../firebase';
+import * as firebase from 'firebase';
+import { browserHistory } from 'react-router';
 
 class Log extends Component {
   signOut() {

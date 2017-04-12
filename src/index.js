@@ -25,7 +25,6 @@ firebaseApp.auth().onAuthStateChanged(user => {
 
     firebaseDatabase.ref('users/' + userId).once('value', snap => {
       if (snap.val() === null ) {
-        console.log(snap.val());
         firebaseDatabase.ref('users/' + userId).set({
           email
         });
@@ -35,7 +34,6 @@ firebaseApp.auth().onAuthStateChanged(user => {
         browserHistory.push('profile');
       }
       else {
-        console.log(snap.val().target);
         browserHistory.push('/log');
       }
     })
