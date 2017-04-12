@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
-import { firebaseApp } from './firebase';
+import { firebaseApp, firebaseDatabase  } from './firebase';
 import Welcome from './components/Welcome';
 import Log from './components/Log';
 import Profile from './components/Profile';
@@ -13,11 +13,25 @@ import { updateUser } from './actions';
 
 const store = createStore(reducer);
 
+
+
 firebaseApp.auth().onAuthStateChanged(user => {
+
   if (user) {
     const { email } = user;
     store.dispatch(updateUser(email));
     console.log('logged in');
+    const userId = firebaseApp.auth().currentUser.uid;
+
+    firebaseDatabase.ref('users/' + userId).once('value', snap => {
+      if (snap.val() === null) {
+        firebaseDatabase.ref('users/' + userId).set({
+          email: email,
+          target: null,
+          logs: []
+        })
+      }
+    })
     browserHistory.push('/log');
   }
   else {
