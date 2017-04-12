@@ -24,17 +24,18 @@ firebaseApp.auth().onAuthStateChanged(user => {
     const userId = firebaseApp.auth().currentUser.uid;
 
     firebaseDatabase.ref('users/' + userId).once('value', snap => {
-      if (snap.val() === null) {
+      if (snap.val() === null ) {
         console.log(snap.val());
         firebaseDatabase.ref('users/' + userId).set({
-          email: email,
-          target:2500,
-          logs: []
+          email
         });
         browserHistory.push('/profile');
       }
+      else if (snap.val() !== null && !snap.val().target) {
+        browserHistory.push('profile');
+      }
       else {
-        console.log(snap.val());
+        console.log(snap.val().target);
         browserHistory.push('/log');
       }
     })
