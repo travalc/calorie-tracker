@@ -30,7 +30,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
         });
         browserHistory.push('/profile');
       }
-      else if (snap.val() !== null && !snap.val().target) {
+      else if (snap.val() !== null && !snap.val().profile) {
         browserHistory.push('profile');
       }
       else {

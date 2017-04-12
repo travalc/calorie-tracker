@@ -6,13 +6,29 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      target: null
+      target: null,
+      name: null,
+      age: null,
+      sex: null,
+      feet: null,
+      inches: null,
+      weight: null
     }
   }
 
   updateProfile() {
     const userId = firebaseApp.auth().currentUser.uid;
-    firebaseDatabase.ref('users/' + userId).update({target: this.state.target });
+    const profile = {
+      name: this.state.name,
+      age: this.state.age,
+      sex: this.state.sex,
+      height: {
+        feet: this.state.feet,
+        inches: this.state.inches
+      },
+      weight: this.state.weight
+    }
+    firebaseDatabase.ref('users/' + userId).update({profile: profile });
     browserHistory.push('/log');
   }
 
@@ -25,14 +41,19 @@ class Profile extends Component {
           <input
             className="form-control"
             placeholder="First + Last"
+            onChange={event => this.setState({name: event.target.value})}
           />
           <label>Age:</label>
           <input
             className="form-control"
             placeholder="ex. 30"
+            onChange={event => this.setState({age: event.target.value})}
           />
           <label>Sex:</label>
-          <select>
+          <select
+            onChange={event => this.setState({sex: event.target.value})}
+          >
+            <option value={null}>-</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
@@ -42,16 +63,19 @@ class Profile extends Component {
             <input
               className="form-control"
               placeholder="feet"
+              onChange={event => this.setState({feet: event.target.value})}
             />
             <input
               className="form-control"
               placeholder="inches"
+              onChange={event => this.setState({inches: event.target.value})}
             />
           </div>
           <label>Current Weight:</label>
           <input
             className="form-control"
             placeholder="weight in pounds"
+            onChange={event => this.setState({weight: event.target.value})}
           />
           <label>Target Daily Caloric Intake:</label>
           <input
