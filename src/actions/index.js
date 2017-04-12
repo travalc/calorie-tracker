@@ -1,4 +1,4 @@
-import { UPDATE_USER } from '../constants';
+import { UPDATE_USER, PROFILE_SUBMITTED } from '../constants';
 
 export function updateUser(email) {
   const action = {
@@ -6,4 +6,12 @@ export function updateUser(email) {
     email
   }
   return action;
+}
+
+export function submitProfile(bool) {
+  const action = {
+    type: PROFILE_SUBMITTED,
+    bool
+  }
+  return action
 }

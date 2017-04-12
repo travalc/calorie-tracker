@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../actions';
+import { updateUser, submitProfile } from '../actions';
 import { Link } from 'react-router';
 import { firebaseApp } from '../firebase';
 
@@ -19,6 +19,7 @@ class Register extends Component {
   register() {
     const { email, password } = this.state;
     this.props.updateUser(email);
+    this.props.submitProfile(true);
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
       .catch(error => {
         this.setState({error})
@@ -60,4 +61,4 @@ class Register extends Component {
   }
 }
 
-export default connect(null, { updateUser })(Register);
+export default connect(null, { updateUser, submitProfile })(Register);

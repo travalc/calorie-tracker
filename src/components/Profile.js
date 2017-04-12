@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { submitProfile } from '../actions';
 import { firebaseApp, firebaseDatabase } from '../firebase';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 
 class Profile extends Component {
   constructor(props) {
@@ -16,12 +18,15 @@ class Profile extends Component {
     }
   }
 
+
+
   componentDidMount() {
     const userId = firebaseApp.auth().currentUser.uid;
     let userInfo = '';
     firebaseDatabase.ref('users/' + userId ).once('value', snap => {
       userInfo = snap.val();
       if (userInfo.hasOwnProperty('profile')) {
+        this.props.submitProfile(false);
         this.setState ({
           name: userInfo.profile.name,
           age: userInfo.profile.age,
@@ -29,12 +34,13 @@ class Profile extends Component {
           feet: userInfo.profile.height.feet,
           inches: userInfo.profile.height.inches,
           weight: userInfo.profile.weight,
-          target: userInfo.profile.target
+          target: userInfo.profile.target,
         });
         console.log(this.state);
       }
     })
   }
+
 
   updateProfile() {
     const userId = firebaseApp.auth().currentUser.uid;
@@ -50,11 +56,12 @@ class Profile extends Component {
       target: this.state.target
     }
     firebaseDatabase.ref('users/' + userId).update({ profile });
+    this.props.submitProfile(false);
     browserHistory.push('/log');
   }
 
   render() {
-
+    console.log(this.props);
     return (
       <div>
         <h4>Please complete your profile (you can update this any time)</h4>
@@ -112,17 +119,34 @@ class Profile extends Component {
             value={this.state.target}
             onChange={event => this.setState({target: event.target.value})}
           />
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={() => this.updateProfile()}
-          >
-            Save
-          </button>
+          <div className="form-inline">
+            <button
+              className="btn btn-primary"
+              type="button"
+              onClick={() => this.updateProfile()}
+            >
+              Save
+            </button>
+
+            {
+              this.props.state.newUser === false
+              ?
+                <div><Link to={'/log'}>Cancel</Link></div>
+              :
+                <div></div>
+            }
+
+          </div>
         </div>
       </div>
     )
   }
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  return {
+    state
+  }
+}
+
+export default connect(mapStateToProps, { submitProfile })(Profile);

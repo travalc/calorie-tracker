@@ -1,1 +1,2 @@
 export const UPDATE_USER = 'UPDATE_USER';
+export const PROFILE_SUBMITTED = 'PROFILE_SUBMITTED';
