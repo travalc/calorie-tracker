@@ -43,7 +43,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
   }
   else {
     console.log('no user found');
-    browserHistory.replace('/register');
+    browserHistory.replace('/');
   }
 })
 
