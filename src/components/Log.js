@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { firebaseApp } from '../firebase';
-import * as firebase from 'firebase';
-import { browserHistory } from 'react-router';
+import { firebaseApp, firebaseDatabase } from '../firebase';
+import { browserHistory, Link } from 'react-router';
 
 class Log extends Component {
   signOut() {
@@ -10,7 +9,6 @@ class Log extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <h2>Log</h2>
@@ -20,6 +18,7 @@ class Log extends Component {
         >
           Sign Out
         </button>
+        <div><Link to={'/profile'}>Update Profile</Link></div>
       </div>
     )
   }
