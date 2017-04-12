@@ -27,15 +27,17 @@ class Register extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="form-inline">
+      <div>
         <h2>Register</h2>
         <p>To use this app, please sign up using a correctly formatted email, and a password.</p>
         <div className="form-group">
+          <label>Email:</label>
           <input
             className="form-control"
             placeholder="email"
             onChange={event => this.setState({email: event.target.value})}
           />
+          <label>Password:</label>
           <input
             className="form-control"
             type="password"
