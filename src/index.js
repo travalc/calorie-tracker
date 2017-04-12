@@ -7,30 +7,34 @@ import { firebaseApp } from './firebase';
 import Welcome from './components/Welcome';
 import Log from './components/Log';
 import Profile from './components/Profile';
-import SignIn from './components/SignIn';
 import Register from './components/Register';
+import reducer from './reducers';
+import { updateUser } from './actions';
+
+const store = createStore(reducer);
 
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
+    const { email } = user;
+    store.dispatch(updateUser(email));
     console.log('logged in');
     browserHistory.push('/log');
   }
   else {
     console.log('no user found');
-    browserHistory.replace('/');
+    browserHistory.replace('/register');
   }
 })
 
-//const store = createStore(reducer);
 
 ReactDOM.render(
-  //<Provider store={store}>
+  <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Welcome} />
       <Route path="/log" component={Log} />
       <Route path="/profile" component={Profile} />
       <Route path="/register" component={Register} />
     </Router>
-  //</Provider>
+  </Provider>
   , document.getElementById('root')
 )
