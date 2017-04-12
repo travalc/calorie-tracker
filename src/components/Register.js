@@ -18,7 +18,7 @@ class Register extends Component {
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
       .catch(error => {
         this.setState({error})
-      })        
+      })
   }
 
   render() {
@@ -30,13 +30,13 @@ class Register extends Component {
           <input
             className="form-control"
             placeholder="email"
-            onChange={event => this.setState({email: this.target.value})}
+            onChange={event => this.setState({email: event.target.value})}
           />
           <input
             className="form-control"
             type="password"
             placeholder="password"
-            onChange={event => this.setState({password: this.target.value})}
+            onChange={event => this.setState({password: event.target.value})}
           />
           <button
             className="btn btn-primary"

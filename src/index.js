@@ -10,18 +10,27 @@ import Profile from './components/Profile';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
 
+firebaseApp.auth().onAuthStateChanged(user => {
+  if (user) {
+    console.log('logged in');
+    browserHistory.push('/log');
+  }
+  else {
+    console.log('no user found');
+    browserHistory.replace('/');
+  }
+})
 
-
-const store = createStore(reducer);
+//const store = createStore(reducer);
 
 ReactDOM.render(
-  <Provider store={store}>
+  //<Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Welcome}>
+      <Route path="/" component={Welcome} />
       <Route path="/log" component={Log} />
       <Route path="/profile" component={Profile} />
-      <Route path="/signin" component={SignIn} />
       <Route path="/register" component={Register} />
     </Router>
-  </Provider>
+  //</Provider>
+  , document.getElementById('root')
 )
