@@ -25,14 +25,20 @@ firebaseApp.auth().onAuthStateChanged(user => {
 
     firebaseDatabase.ref('users/' + userId).once('value', snap => {
       if (snap.val() === null) {
+        console.log(snap.val());
         firebaseDatabase.ref('users/' + userId).set({
           email: email,
-          target: null,
+          target:2500,
           logs: []
-        })
+        });
+        browserHistory.push('/profile');
+      }
+      else {
+        console.log(snap.val());
+        browserHistory.push('/log');
       }
     })
-    browserHistory.push('/log');
+
   }
   else {
     console.log('no user found');
