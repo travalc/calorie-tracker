@@ -10,6 +10,8 @@ import Profile from './components/Profile';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
 
+
+
 const store = createStore(reducer);
 
 ReactDOM.render(
