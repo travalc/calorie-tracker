@@ -28,7 +28,7 @@ class Profile extends Component {
       },
       weight: this.state.weight
     }
-    firebaseDatabase.ref('users/' + userId).update({profile: profile });
+    firebaseDatabase.ref('users/' + userId).update({ profile });
     browserHistory.push('/log');
   }
 

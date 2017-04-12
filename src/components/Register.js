@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../actions';
+import { Link } from 'react-router';
 import { firebaseApp } from '../firebase';
 
 class Register extends Component {
@@ -52,6 +53,8 @@ class Register extends Component {
             Register
           </button>
         </div>
+        <div>{this.state.error.message}</div>
+        <div><Link to ={'/'}>Already a user? Sign in instead</Link></div>
       </div>
     )
   }
