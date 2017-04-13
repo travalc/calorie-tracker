@@ -25,8 +25,8 @@ class Profile extends Component {
         name: this.props.state.profile.name,
         age: this.props.state.profile.age,
         sex: this.props.state.profile.sex,
-        feet: this.props.state.profile.height.feet,
-        inches: this.props.state.profile.height.inches,
+        feet: this.props.state.profile.feet,
+        inches: this.props.state.profile.inches,
         weight: this.props.state.profile.weight,
         target: this.props.state.profile.target,
       });

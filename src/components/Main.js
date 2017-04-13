@@ -13,7 +13,6 @@ class Main extends Component {
     console.log(this.props.state.profile);
     return (
       <div>
-        <h2>Main</h2>
         <AboutSection profile={this.props.state.profile} />
         <button
           className="btn btn-danger"
