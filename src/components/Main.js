@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { firebaseApp, firebaseDatabase } from '../firebase';
 import { browserHistory, Link } from 'react-router';
+import AboutSection from './AboutSection';
 
 class Main extends Component {
   signOut() {
@@ -9,10 +10,11 @@ class Main extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.state.profile);
     return (
       <div>
         <h2>Main</h2>
+        <AboutSection profile={this.props.state.profile} />
         <button
           className="btn btn-danger"
           onClick={() => this.signOut()}

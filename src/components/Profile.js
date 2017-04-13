@@ -40,17 +40,14 @@ class Profile extends Component {
       name: this.state.name,
       age: this.state.age,
       sex: this.state.sex,
-      height: {
-        feet: this.state.feet,
-        inches: this.state.inches
-      },
+      feet: this.state.feet,
+      inches: this.state.inches,
       weight: this.state.weight,
       target: this.state.target
     }
     firebaseDatabase.ref('users/' + userId).update({ profile });
-    this.props.loadProfile(profile);
     this.props.submitProfile(false);
-    browserHistory.push('/Main');
+
   }
 
   render() {

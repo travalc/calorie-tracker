@@ -23,7 +23,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
     console.log('logged in');
     const userId = firebaseApp.auth().currentUser.uid;
 
-    firebaseDatabase.ref('users/' + userId).once('value', snap => {
+    firebaseDatabase.ref('users/' + userId).on('value', snap => {
       if (snap.val() === null ) {
         firebaseDatabase.ref('users/' + userId).set({
           email
