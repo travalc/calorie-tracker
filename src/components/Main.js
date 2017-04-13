@@ -3,15 +3,16 @@ import { connect } from 'react-redux'
 import { firebaseApp, firebaseDatabase } from '../firebase';
 import { browserHistory, Link } from 'react-router';
 
-class Log extends Component {
+class Main extends Component {
   signOut() {
     firebaseApp.auth().signOut();
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
-        <h2>Log</h2>
+        <h2>Main</h2>
         <button
           className="btn btn-danger"
           onClick={() => this.signOut()}
@@ -30,4 +31,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(Log);
+export default connect(mapStateToProps, null)(Main);

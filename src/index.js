@@ -5,11 +5,11 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { firebaseApp, firebaseDatabase  } from './firebase';
 import Welcome from './components/Welcome';
-import Log from './components/Log';
+import Main from './components/Main';
 import Profile from './components/Profile';
 import Register from './components/Register';
 import reducer from './reducers';
-import { updateUser } from './actions';
+import { updateUser, loadProfile } from './actions';
 
 const store = createStore(reducer);
 
@@ -34,7 +34,9 @@ firebaseApp.auth().onAuthStateChanged(user => {
         browserHistory.push('profile');
       }
       else {
-        browserHistory.push('/log');
+        const profileInfo = snap.val().profile;
+        store.dispatch(loadProfile(profileInfo));
+        browserHistory.push('/Main');
       }
     })
 
@@ -50,7 +52,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Welcome} />
-      <Route path="/log" component={Log} />
+      <Route path="/Main" component={Main} />
       <Route path="/profile" component={Profile} />
       <Route path="/register" component={Register} />
     </Router>

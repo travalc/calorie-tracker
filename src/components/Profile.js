@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { submitProfile } from '../actions';
+import { submitProfile, loadProfile } from '../actions';
 import { firebaseApp, firebaseDatabase } from '../firebase';
 import { browserHistory, Link } from 'react-router';
 
@@ -18,29 +18,21 @@ class Profile extends Component {
     }
   }
 
-
-
   componentDidMount() {
-    const userId = firebaseApp.auth().currentUser.uid;
-    let userInfo = '';
-    firebaseDatabase.ref('users/' + userId ).once('value', snap => {
-      userInfo = snap.val();
-      if (userInfo.hasOwnProperty('profile')) {
-        this.props.submitProfile(false);
-        this.setState ({
-          name: userInfo.profile.name,
-          age: userInfo.profile.age,
-          sex: userInfo.profile.sex,
-          feet: userInfo.profile.height.feet,
-          inches: userInfo.profile.height.inches,
-          weight: userInfo.profile.weight,
-          target: userInfo.profile.target,
-        });
-        console.log(this.state);
-      }
-    })
-  }
+    if (this.props.state.profile.hasOwnProperty('target')) {
+      this.props.submitProfile(false);
+      this.setState ({
+        name: this.props.state.profile.name,
+        age: this.props.state.profile.age,
+        sex: this.props.state.profile.sex,
+        feet: this.props.state.profile.height.feet,
+        inches: this.props.state.profile.height.inches,
+        weight: this.props.state.profile.weight,
+        target: this.props.state.profile.target,
+      });
+    }
 
+  }
 
   updateProfile() {
     const userId = firebaseApp.auth().currentUser.uid;
@@ -56,8 +48,9 @@ class Profile extends Component {
       target: this.state.target
     }
     firebaseDatabase.ref('users/' + userId).update({ profile });
+    this.props.loadProfile(profile);
     this.props.submitProfile(false);
-    browserHistory.push('/log');
+    browserHistory.push('/Main');
   }
 
   render() {
@@ -131,7 +124,7 @@ class Profile extends Component {
             {
               this.props.state.newUser === false
               ?
-                <div><Link to={'/log'}>Cancel</Link></div>
+                <div><Link to={'/Main'}>Cancel</Link></div>
               :
                 <div></div>
             }
@@ -149,4 +142,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { submitProfile })(Profile);
+export default connect(mapStateToProps, { submitProfile, loadProfile })(Profile);
