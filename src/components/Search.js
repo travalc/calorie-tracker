@@ -100,6 +100,13 @@ class Today extends Component {
                   <li key={this.state.selectedItem.id}>
                     <span style={{display: 'block'}}><strong>Name:</strong> {this.state.selectedItem.name}</span>
                     <span style={{display: 'block'}}><strong>Calories:</strong> {this.state.selectedItem.calories}</span>
+                    <button
+                      className="btn btn-danger"
+                      type="button"
+                      onClick={() => this.setState({selectedItem: null})}
+                    >
+                      Back
+                    </button>
                   </li>
               :
                 <div></div>
