@@ -7,7 +7,7 @@ class Today extends Component {
     this.state = {
       query:'',
       showModal: false,
-      currentItem: null
+      currentSet: null
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -31,7 +31,16 @@ class Today extends Component {
     .then(response => response.json())
     .then(json => {
       console.log(json);
-      this.setState({currentItem: json.hits[0].fields.item_name});
+      let itemSet = [];
+      json.hits.forEach(item => {
+        const itemInfo = {
+          name: item.fields.item_name,
+          calories: item.fields.nf_calories,
+          id: Math.random()
+        };
+        itemSet.push(itemInfo);
+      })
+      this.setState({currentSet: itemSet});
     })
   }
 
@@ -60,7 +69,28 @@ class Today extends Component {
           isOpen={this.state.showModal}
           contentLabel="Food Selection"
         >
-          <p>{this.state.currentItem}</p>
+          <ul style={{listStyleType: 'none'}}>
+          {
+            this.state.currentSet !== null
+            ?
+            this.state.currentSet.map(item => {
+              return (
+                <li key={item.id} style={{margin: '15px'}}>
+                  <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
+                  <span style={{display: 'block'}}><strong>Calories Per Serving:</strong> {item.calories}</span>
+                  <button
+                    className="btn btn-success"
+                    type="button"
+                  >
+                    Select
+                  </button>
+                </li>
+              )
+            })
+            :
+             <div></div>
+          }
+          </ul>
           <button
             onClick={() => this.handleCloseModal()}
           >
