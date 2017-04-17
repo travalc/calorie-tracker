@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
+import ReactModal from 'react-modal';
 
 class Today extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query:''
+      query:'',
+      showModal: false
     }
+
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal() {
+    this.setState({showModal: true});
+  }
+
+  handleCloseModal() {
+    this.setState({showModal: false})
   }
 
   searchAPI() {
@@ -33,11 +46,25 @@ class Today extends Component {
           <button
             className="btn btn-primary"
             type="button"
-            onClick={() => this.searchAPI()}
+            onClick={() => {
+              this.searchAPI();
+              this.handleOpenModal();
+            }}
           >
             Search
           </button>
         </div>
+        <ReactModal
+          isOpen={this.state.showModal}
+          contentLabel="Food Selection"
+        >
+          <p>test</p>
+          <button
+            onClick={() => this.handleCloseModal()}
+          >
+            Close
+          </button>
+        </ReactModal>
       </div>
     )
   }
