@@ -78,28 +78,38 @@ class Today extends Component {
           <ul style={{listStyleType: 'none'}}>
           {
             this.state.currentSet !== null
-            ?
-            this.state.currentSet.map(item => {
-              return (
-                <li key={item.id} style={{margin: '15px'}}>
-                  <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
-                  <span style={{display: 'block'}}><strong>Calories Per Serving:</strong> {item.calories}</span>
-                  <button
-                    className="btn btn-success"
-                    type="button"
-                    onClick={() => this.selectItem(item)}
-                  >
-                    Select
-                  </button>
-                </li>
-              )
-            })
-            :
-             <div></div>
+              ?
+                this.state.selectedItem === null
+                ?
+                  this.state.currentSet.map(item => {
+                    return (
+                      <li key={item.id} style={{margin: '15px'}}>
+                        <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
+                        <span style={{display: 'block'}}><strong>Calories Per Serving:</strong> {item.calories}</span>
+                        <button
+                          className="btn btn-success"
+                          type="button"
+                          onClick={() => this.selectItem(item)}
+                        >
+                          Select
+                        </button>
+                     </li>
+                   )
+                 })
+               :
+                  <li key={this.state.selectedItem.id}>
+                    <span style={{display: 'block'}}><strong>Name:</strong> {this.state.selectedItem.name}</span>
+                    <span style={{display: 'block'}}><strong>Calories:</strong> {this.state.selectedItem.calories}</span>
+                  </li>
+              :
+                <div></div>
           }
           </ul>
           <button
-            onClick={() => this.handleCloseModal()}
+            onClick={() => {
+              this.handleCloseModal();
+              this.setState({selectedItem: null});
+            }}
           >
             Close
           </button>
