@@ -50,7 +50,6 @@ class Today extends Component {
   }
 
   render() {
-    console.log(this.state.selectedItem);
     return (
       <div>
         <p>Search for a food to add!</p>
@@ -100,6 +99,21 @@ class Today extends Component {
                   <li key={this.state.selectedItem.id}>
                     <span style={{display: 'block'}}><strong>Name:</strong> {this.state.selectedItem.name}</span>
                     <span style={{display: 'block'}}><strong>Calories:</strong> {this.state.selectedItem.calories}</span>
+                    <div>
+                      <span><strong>Quantity:</strong></span>
+                      <select name="quantity">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                      </select>
+                    </div>
                     <button
                       className="btn btn-danger"
                       type="button"

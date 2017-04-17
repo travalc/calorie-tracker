@@ -11,7 +11,7 @@ class Main extends Component {
   }
 
   render() {
-    console.log(this.props.state.profile);
+    console.log(this.props.state);
     return (
       <div>
         <AboutSection profile={this.props.state.profile} />
