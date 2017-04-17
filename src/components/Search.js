@@ -8,7 +8,8 @@ class Today extends Component {
       query:'',
       showModal: false,
       currentSet: null,
-      selectedItem: null
+      selectedItem: null,
+      quantity: null
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -25,6 +26,15 @@ class Today extends Component {
 
   selectItem(item) {
     this.setState({selectedItem: item});
+  }
+
+  addItem(name, calories, quantity) {
+    const item = {
+      name: name,
+      calories: calories * quantity,
+      quantity: quantity
+    }
+    console.log(item);
   }
 
   searchAPI() {
@@ -101,26 +111,38 @@ class Today extends Component {
                     <span style={{display: 'block'}}><strong>Calories:</strong> {this.state.selectedItem.calories}</span>
                     <div>
                       <span><strong>Quantity:</strong></span>
-                      <select name="quantity">
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
+                      <select name="quantity"
+                        onChange={event => this.setState({quantity: event.target.value})}
+                      >
+                        <option value={null}>-</option>
+                        <option value={1}>01</option>
+                        <option value={2}>02</option>
+                        <option value={3}>03</option>
+                        <option value={4}>04</option>
+                        <option value={5}>05</option>
+                        <option value={6}>06</option>
+                        <option value={7}>07</option>
+                        <option value={8}>08</option>
+                        <option value={9}>09</option>
+                        <option value={10}>10</option>
                       </select>
                     </div>
-                    <button
-                      className="btn btn-danger"
-                      type="button"
-                      onClick={() => this.setState({selectedItem: null})}
-                    >
-                      Back
-                    </button>
+                    <div className="form-inline">
+                      <button
+                        className="btn btn-success"
+                        type="button"
+                        onClick={() => this.addItem(this.state.selectedItem.name, this.state.selectedItem.calories, this.state.quantity)}
+                      >
+                        Add
+                      </button>
+                      <button
+                        className="btn btn-danger"
+                        type="button"
+                        onClick={() => this.setState({selectedItem: null})}
+                      >
+                        Back
+                      </button>
+                    </div>
                   </li>
               :
                 <div></div>
