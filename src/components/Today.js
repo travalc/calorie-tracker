@@ -6,7 +6,8 @@ class Today extends Component {
     super(props);
     this.state = {
       query:'',
-      showModal: false
+      showModal: false,
+      currentItem: null
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -23,13 +24,14 @@ class Today extends Component {
 
   searchAPI() {
     const BASE_URL = 'https://api.nutritionix.com/v1_1/search';
-    let search_url = `${BASE_URL}/${this.state.query}?&fields=nf_calories&appId=5348c271&appKey=e7d92cb75ab49dda35403e5763299439`;
+    let search_url = `${BASE_URL}/${this.state.query}?&fields=item_name,nf_calories&appId=5348c271&appKey=e7d92cb75ab49dda35403e5763299439`;
     fetch(search_url, {
       method: 'GET'
     })
     .then(response => response.json())
     .then(json => {
       console.log(json);
+      this.setState({currentItem: json.hits[0].fields.item_name});
     })
   }
 
@@ -58,7 +60,7 @@ class Today extends Component {
           isOpen={this.state.showModal}
           contentLabel="Food Selection"
         >
-          <p>test</p>
+          <p>{this.state.currentItem}</p>
           <button
             onClick={() => this.handleCloseModal()}
           >
