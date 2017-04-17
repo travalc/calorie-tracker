@@ -7,7 +7,8 @@ class Today extends Component {
     this.state = {
       query:'',
       showModal: false,
-      currentSet: null
+      currentSet: null,
+      selectedItem: null
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -19,7 +20,11 @@ class Today extends Component {
   }
 
   handleCloseModal() {
-    this.setState({showModal: false})
+    this.setState({showModal: false});
+  }
+
+  selectItem(item) {
+    this.setState({selectedItem: item});
   }
 
   searchAPI() {
@@ -45,6 +50,7 @@ class Today extends Component {
   }
 
   render() {
+    console.log(this.state.selectedItem);
     return (
       <div>
         <p>Search for a food to add!</p>
@@ -81,6 +87,7 @@ class Today extends Component {
                   <button
                     className="btn btn-success"
                     type="button"
+                    onClick={() => this.selectItem(item)}
                   >
                     Select
                   </button>
