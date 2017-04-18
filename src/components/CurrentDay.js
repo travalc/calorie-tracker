@@ -7,6 +7,10 @@ class CurrentDay extends Component {
     super(props);
     this.state = {
       showModal: false,
+      editItem: {
+        name: '',
+        calories: ''
+      },
       quantity: 0
     }
   }
@@ -36,56 +40,14 @@ class CurrentDay extends Component {
                       <span style={{display: 'block'}}><strong>Servings:</strong> {item.quantity}</span>
                       <span style={{display: 'block'}}><strong>Calories:</strong> {item.calories}</span>
                       <div
-                        onClick={() => this.handleOpenModal()}
+                        onClick={() => {
+                          this.handleOpenModal();
+                          this.setState({editItem: item})
+                        }}
                       >
                         <span className="glyphicon glyphicon-pencil"></span>
                       </div>
-                      <ReactModal
-                        isOpen={this.state.showModal}
-                        contentLabel="Edit Food"
-                      >
-                        <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
-                        <span style={{display: 'block'}}><strong>Calories:</strong> {item.calories}</span>
-                        <div className="form-inline">
-                          <span><strong>Servings:</strong> </span>
-                          <select name="servings"
-                            onChange={event => this.setState({quantity: event.target.value})}
-                          >
-                            <option value={0}>-</option>
-                            <option value={1}>01</option>
-                            <option value={2}>02</option>
-                            <option value={3}>03</option>
-                            <option value={4}>04</option>
-                            <option value={5}>05</option>
-                            <option value={6}>06</option>
-                            <option value={7}>07</option>
-                            <option value={8}>08</option>
-                            <option value={9}>09</option>
-                            <option value={10}>10</option>
-                          </select>
-                        </div>
-                        <div style={{margin: "10px"}} className="form-inline">
-                          <button
-                            className="btn btn-success"
-                            type="button"
-                          >
-                            Save
-                          </button>
-                          <button
-                            className="btn btn-danger"
-                            type="button"
-                          >
-                            Delete Item
-                          </button>
-                          <button
-                            className="btn btn-warning"
-                            type="button"
-                            onClick={() => this.handleCloseModal()}
-                          >
-                            Cancel
-                          </button>
-                        </div>
-                      </ReactModal>
+
                     </li>
                   )
                 })
@@ -94,6 +56,52 @@ class CurrentDay extends Component {
           }
         </ul>
         <p><strong>Total Calories For Today:</strong> {this.props.foods.totalCalories}</p>
+        <ReactModal
+          isOpen={this.state.showModal}
+          contentLabel="Edit Food"
+        >
+          <span style={{display: 'block'}}><strong>Name:</strong> {this.state.editItem.name}</span>
+          <span style={{display: 'block'}}><strong>Calories:</strong> {this.state.editItem.calories}</span>
+          <div className="form-inline">
+            <span><strong>Servings:</strong> </span>
+            <select name="servings"
+              onChange={event => this.setState({quantity: event.target.value})}
+            >
+              <option value={0}>-</option>
+              <option value={1}>01</option>
+              <option value={2}>02</option>
+              <option value={3}>03</option>
+              <option value={4}>04</option>
+              <option value={5}>05</option>
+              <option value={6}>06</option>
+              <option value={7}>07</option>
+              <option value={8}>08</option>
+              <option value={9}>09</option>
+              <option value={10}>10</option>
+            </select>
+          </div>
+          <div style={{margin: "10px"}} className="form-inline">
+            <button
+              className="btn btn-success"
+              type="button"
+            >
+              Save
+            </button>
+            <button
+              className="btn btn-danger"
+              type="button"
+            >
+              Delete Item
+            </button>
+            <button
+              className="btn btn-warning"
+              type="button"
+              onClick={() => this.handleCloseModal()}
+            >
+              Cancel
+            </button>
+          </div>
+        </ReactModal>
       </div>
     )
   }
