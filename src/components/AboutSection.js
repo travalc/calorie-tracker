@@ -4,9 +4,9 @@ class AboutSection extends Component {
   render() {
     console.log(this.props.profile.height);
     return (
-      <div className="about" style={{background: 'orange'}}>
-        <h3>Your Stats</h3>
-        <ul>
+      <div className="about" style={{padding: '20px'}}>
+        <h3>About You</h3>
+        <ul style={{listStyleType: 'none'}}>
           <li><strong>Name:</strong> {this.props.profile.name}</li>
           <li><strong>Age:</strong> {this.props.profile.age}</li>
           <li><strong>Sex:</strong> {this.props.profile.sex}</li>

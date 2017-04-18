@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import Search from './Search';
 
 class CurrentDay extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
+      <div style={{padding: '20px'}}>
         <h4>What You Have Eaten Today</h4>
+        <Search />
         <ul style={{listStyleType: 'none'}}>
           {
             this.props.foods.foodItems.length > 0

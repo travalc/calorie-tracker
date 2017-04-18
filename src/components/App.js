@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { firebaseApp, firebaseDatabase } from '../firebase';
 import { browserHistory, Link } from 'react-router';
 import AboutSection from './AboutSection';
-import Search from './Search';
 import CurrentDay from './CurrentDay';
 
 class App extends Component {
@@ -16,8 +15,9 @@ class App extends Component {
     return (
       <div>
         <AboutSection profile={this.props.state.profile} />
-        <Search />
+        <hr />
         <CurrentDay foods={this.props.state.currentDayFoods}/>
+        <hr />
         <button
           className="btn btn-danger"
           onClick={() => this.signOut()}
