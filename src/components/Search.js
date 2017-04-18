@@ -39,6 +39,7 @@ class Today extends Component {
     }
     this.props.addFoodItem(item);
     this.handleCloseModal();
+    this.setState({ currentSet: null, selectedItem: null});
   }
 
   searchAPI() {
