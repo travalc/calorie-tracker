@@ -118,8 +118,9 @@ class Today extends Component {
                       <span><strong>Quantity:</strong></span>
                       <select name="quantity"
                         onChange={event => this.setState({quantity: event.target.value})}
+                        defaultValue="0"
                       >
-                        <option value={null}>-</option>
+                        <option value={0}>-</option>
                         <option value={1}>01</option>
                         <option value={2}>02</option>
                         <option value={3}>03</option>
@@ -136,7 +137,10 @@ class Today extends Component {
                       <button
                         className="btn btn-success"
                         type="button"
-                        onClick={() => this.addItem(this.state.selectedItem.name, this.state.selectedItem.calories, this.state.quantity)}
+                        onClick={() => {
+                          this.addItem(this.state.selectedItem.name, this.state.selectedItem.calories, this.state.quantity);
+                          this.setState({quantity: 0});
+                        }}
                       >
                         Add
                       </button>

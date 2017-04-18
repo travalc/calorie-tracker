@@ -5,6 +5,7 @@
   "dependencies": {
     "firebase": "^3.7.5",
     "react": "^15.5.4",
+    "react-bootstrap": "^0.30.8",
     "react-dom": "^15.5.4",
     "react-modal": "^1.7.6",
     "react-redux": "^5.0.4",
