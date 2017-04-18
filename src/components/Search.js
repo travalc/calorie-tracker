@@ -153,6 +153,14 @@ class Today extends Component {
                 <div></div>
           }
           </ul>
+          <a
+            href="https://www.nutritionix.com/business/api"
+            target="#"
+          >
+            <img
+              src="https://d2eawub7utcl6.cloudfront.net/images/poweredby_nutritionix_api.png"
+            />
+          </a>
           <button
             onClick={() => {
               this.handleCloseModal();
