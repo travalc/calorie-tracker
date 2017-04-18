@@ -13,7 +13,9 @@ class CurrentDay extends Component {
         name: '',
         calories: ''
       },
-      quantity: 0
+      quantity: '',
+      name: '',
+      calories: ''
     }
   }
 
@@ -44,7 +46,12 @@ class CurrentDay extends Component {
                       <div
                         onClick={() => {
                           this.handleOpenModal();
-                          this.setState({editItem: item})
+                          this.setState({
+                            editItem: item,
+                            name: item.name,
+                            calories: item.calories,
+                            quantity: item.quantity                           
+                          });
                         }}
                       >
                         <span className="glyphicon glyphicon-pencil"></span>
@@ -62,11 +69,16 @@ class CurrentDay extends Component {
           isOpen={this.state.showModal}
           contentLabel="Edit Food"
         >
-          <span style={{display: 'block'}}><strong>Name:</strong> {this.state.editItem.name}</span>
-          <span style={{display: 'block'}}><strong>Calories:</strong> {this.state.editItem.calories}</span>
+          <span style={{display: 'block'}}>
+            <strong>Name:</strong><input className="form-control" value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
+          </span>
+          <span style={{display: 'block'}}>
+            <strong>Calories:</strong> <input className="form-control" value={this.state.calories} onChange={event => this.setState({calories: event.target.value})}/>
+          </span>
           <div className="form-inline">
             <span><strong>Servings:</strong> </span>
             <select name="servings"
+              value={this.state.quantity}
               onChange={event => this.setState({quantity: event.target.value})}
             >
               <option value={0}>-</option>
