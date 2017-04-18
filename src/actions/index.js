@@ -1,4 +1,4 @@
-import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE, ADD_FOOD_ITEM } from '../constants';
+import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE, ADD_FOOD_ITEM, DELETE_FOOD_ITEM } from '../constants';
 
 export function updateUser(email) {
   const action = {
@@ -28,6 +28,14 @@ export function addFoodItem(item) {
   const action = {
     type: ADD_FOOD_ITEM,
     foodItem: item
+  }
+  return action;
+}
+
+export function deleteFoodItem(item) {
+  const action = {
+    type: DELETE_FOOD_ITEM,
+    item
   }
   return action;
 }

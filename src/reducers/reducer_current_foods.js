@@ -1,4 +1,4 @@
-import { ADD_FOOD_ITEM } from '../constants';
+import { ADD_FOOD_ITEM, DELETE_FOOD_ITEM } from '../constants';
 
 export default (state = {foodItems: [], totalCalories: 0}, action) => {
   let currentDayFoods = null;
@@ -8,6 +8,12 @@ export default (state = {foodItems: [], totalCalories: 0}, action) => {
       currentDayFoods = {
         foodItems: [...state.foodItems, action.foodItem],
         totalCalories: calories + action.foodItem.calories
+      }
+      return currentDayFoods;
+    case DELETE_FOOD_ITEM:
+      currentDayFoods = {
+        foodItems: state.foodItems.filter(item => item.id !== action.item.id),
+        totalCalories: calories - action.item.calories
       }
       return currentDayFoods;
     default:

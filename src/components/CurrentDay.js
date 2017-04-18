@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import Search from './Search';
+import { connect } from 'react-redux';
+import { deleteFoodItem } from '../actions';
 
 class CurrentDay extends Component {
   constructor(props) {
@@ -90,6 +92,10 @@ class CurrentDay extends Component {
             <button
               className="btn btn-danger"
               type="button"
+              onClick={() => {
+                this.props.deleteFoodItem(this.state.editItem);
+                this.handleCloseModal();
+              }}
             >
               Delete Item
             </button>
@@ -107,4 +113,4 @@ class CurrentDay extends Component {
   }
 }
 
-export default CurrentDay;
+export default connect(null, { deleteFoodItem })(CurrentDay);
