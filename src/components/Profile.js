@@ -121,7 +121,7 @@ class Profile extends Component {
             {
               this.props.state.newUser === false
               ?
-                <div><Link to={'/Main'}>Cancel</Link></div>
+                <div><Link to={'/App'}>Cancel</Link></div>
               :
                 <div></div>
             }

@@ -4,8 +4,9 @@ import { firebaseApp, firebaseDatabase } from '../firebase';
 import { browserHistory, Link } from 'react-router';
 import AboutSection from './AboutSection';
 import Search from './Search';
+import CurrentDay from './CurrentDay';
 
-class Main extends Component {
+class App extends Component {
   signOut() {
     firebaseApp.auth().signOut();
   }
@@ -16,6 +17,7 @@ class Main extends Component {
       <div>
         <AboutSection profile={this.props.state.profile} />
         <Search />
+        <CurrentDay foods={this.props.state.currentDayFoods}/>
         <button
           className="btn btn-danger"
           onClick={() => this.signOut()}
@@ -34,4 +36,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(Main);
+export default connect(mapStateToProps, null)(App);

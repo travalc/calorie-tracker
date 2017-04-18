@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { firebaseApp, firebaseDatabase  } from './firebase';
 import Welcome from './components/Welcome';
-import Main from './components/Main';
+import App from './components/App';
 import Profile from './components/Profile';
 import Register from './components/Register';
 import reducer from './reducers';
@@ -36,7 +36,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
       else {
         const profileInfo = snap.val().profile;
         store.dispatch(loadProfile(profileInfo));
-        browserHistory.push('/Main');
+        browserHistory.push('/App');
       }
     })
 
@@ -52,7 +52,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Welcome} />
-      <Route path="/Main" component={Main} />
+      <Route path="/App" component={App} />
       <Route path="/profile" component={Profile} />
       <Route path="/register" component={Register} />
     </Router>
