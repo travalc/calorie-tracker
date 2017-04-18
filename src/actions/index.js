@@ -1,4 +1,4 @@
-import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE } from '../constants';
+import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE, ADD_FOOD_ITEM } from '../constants';
 
 export function updateUser(email) {
   const action = {
@@ -13,7 +13,7 @@ export function submitProfile(bool) {
     type: PROFILE_SUBMITTED,
     bool
   }
-  return action
+  return action;
 }
 
 export function loadProfile(data) {
@@ -21,5 +21,13 @@ export function loadProfile(data) {
     type: LOAD_PROFILE,
     data
   }
-  return action
+  return action;
+}
+
+export function addFoodItem(item) {
+  const action = {
+    type: ADD_FOOD_ITEM,
+    foodItem: item
+  }
+  return action;
 }

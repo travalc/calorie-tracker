@@ -1,3 +1,4 @@
 export const UPDATE_USER = 'UPDATE_USER';
 export const PROFILE_SUBMITTED = 'PROFILE_SUBMITTED';
 export const LOAD_PROFILE = 'LOAD_PROFILE';
+export const ADD_FOOD_ITEM = 'ADD_FOOD_ITEM';

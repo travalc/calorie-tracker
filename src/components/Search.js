@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
+import { connect } from 'react-redux';
+import { addFoodItem } from '../actions';
 
 class Today extends Component {
   constructor(props) {
@@ -32,9 +34,11 @@ class Today extends Component {
     const item = {
       name: name,
       calories: calories * quantity,
-      quantity: quantity
+      quantity: quantity,
+      id: Math.random()
     }
-    console.log(item);
+    this.props.addFoodItem(item);
+    this.handleCloseModal();
   }
 
   searchAPI() {
@@ -162,4 +166,4 @@ class Today extends Component {
   }
 }
 
-export default Today;
+export default connect(null, { addFoodItem })(Today);
