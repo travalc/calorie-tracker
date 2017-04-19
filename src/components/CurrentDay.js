@@ -76,6 +76,10 @@ class CurrentDay extends Component {
           }
         </ul>
         <p><strong>Total Calories For Today:</strong> {this.props.foods.totalCalories}</p>
+
+      {
+        //Editing Modal
+      }
         <ReactModal
           isOpen={this.state.showModal}
           contentLabel="Edit Food"
@@ -84,10 +88,10 @@ class CurrentDay extends Component {
             <strong>Name:</strong><input className="form-control" value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
           </span>
           <span style={{display: 'block'}}>
-            <strong>Calories Per Serving:</strong> <input className="form-control" value={this.state.calories} onChange={event => this.setState({totalCalories: event.target.value})}/>
+            <strong>Calories Per Serving:</strong> <input className="form-control" value={this.state.calories} onChange={event => this.setState({calories: event.target.value})}/>
           </span>
           <span style={{display: 'block'}}>
-            <strong>Total Calories:</strong>{this.state.calories * this.state.quantity}
+            <strong>Total Calories:</strong> {this.state.calories * this.state.quantity}
           </span>
           <div className="form-inline">
             <span><strong>Servings:</strong> </span>
