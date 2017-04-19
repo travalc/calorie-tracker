@@ -33,7 +33,8 @@ class Today extends Component {
   addItem(name, calories, quantity) {
     const item = {
       name: name,
-      calories: calories * quantity,
+      calories: calories,
+      totalCalories: calories * quantity,
       quantity: quantity,
       id: Math.random()
     }

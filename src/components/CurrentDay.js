@@ -28,6 +28,7 @@ class CurrentDay extends Component {
     const item = {
       name: name,
       calories: calories,
+      totalCalories: calories * quantity,
       quantity: quantity,
       id: id
     }
@@ -51,7 +52,7 @@ class CurrentDay extends Component {
                     <li key={item.id} style={{margin: '15px'}}>
                       <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
                       <span style={{display: 'block'}}><strong>Servings:</strong> {item.quantity}</span>
-                      <span style={{display: 'block'}}><strong>Calories:</strong> {item.calories}</span>
+                      <span style={{display: 'block'}}><strong>Total Calories:</strong> {item.totalCalories}</span>
                       <div
                         onClick={() => {
                           this.handleOpenModal();
@@ -59,6 +60,7 @@ class CurrentDay extends Component {
                             editItem: item,
                             name: item.name,
                             calories: item.calories,
+                            totalCalories: item.totalCalories,
                             quantity: item.quantity
                           });
                         }}
@@ -82,7 +84,10 @@ class CurrentDay extends Component {
             <strong>Name:</strong><input className="form-control" value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
           </span>
           <span style={{display: 'block'}}>
-            <strong>Calories:</strong> <input className="form-control" value={this.state.calories} onChange={event => this.setState({calories: event.target.value})}/>
+            <strong>Calories Per Serving:</strong> <input className="form-control" value={this.state.calories} onChange={event => this.setState({totalCalories: event.target.value})}/>
+          </span>
+          <span style={{display: 'block'}}>
+            <strong>Total Calories:</strong>{this.state.calories * this.state.quantity}
           </span>
           <div className="form-inline">
             <span><strong>Servings:</strong> </span>

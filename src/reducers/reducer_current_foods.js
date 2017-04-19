@@ -15,7 +15,7 @@ const getOldCalories = (foods =[], id) => {
   let calories = null;
   foods.map(food => {
     if (food.id === id) {
-      calories = food.calories;
+      calories = food.totalCalories;
     }
   });
   return calories;
@@ -31,13 +31,13 @@ export default (state = {foodItems: [], totalCalories: 0}, action) => {
     case ADD_FOOD_ITEM:
       currentDayFoods = {
         foodItems: [...state.foodItems, action.foodItem],
-        totalCalories: calories + action.foodItem.calories
+        totalCalories: calories + action.foodItem.totalCalories
       }
       return currentDayFoods;
     case DELETE_FOOD_ITEM:
       currentDayFoods = {
         foodItems: state.foodItems.filter(item => item.id !== action.item.id),
-        totalCalories: calories - action.item.calories
+        totalCalories: calories - action.item.totalCalories
       }
       return currentDayFoods;
     case EDIT_FOOD_ITEM:
@@ -45,7 +45,7 @@ export default (state = {foodItems: [], totalCalories: 0}, action) => {
       const oldItemCalories = getOldCalories(state.foodItems, action.foodItem.id);
       currentDayFoods = {
         foodItems: editFood(state.foodItems, action.foodItem),
-        totalCalories: calories - oldItemCalories + action.foodItem.calories
+        totalCalories: calories - oldItemCalories + action.foodItem.totalCalories
       }
       return currentDayFoods;
     default:
