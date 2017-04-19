@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import Search from './Search';
 import { connect } from 'react-redux';
-import { deleteFoodItem } from '../actions';
+import { deleteFoodItem, editItem } from '../actions';
 
 class CurrentDay extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showModal: false,
-      editItem: {
-        name: '',
-        calories: ''
-      },
+      editItem: {},
       quantity: '',
       name: '',
-      calories: ''
+      calories: '',
     }
   }
 
@@ -27,8 +24,20 @@ class CurrentDay extends Component {
     this.setState({showModal: false});
   }
 
+  editFoodItem(name, calories, quantity, id) {
+    const item = {
+      name: name,
+      calories: calories,
+      quantity: quantity,
+      id: id
+    }
+    console.log(item);
+    this.props.editItem(item);
+  }
+
   render() {
     console.log(this.props);
+    console.log(this.state.quantity);
     return (
       <div style={{padding: '20px'}}>
         <h4>What You Have Eaten Today</h4>
@@ -50,7 +59,7 @@ class CurrentDay extends Component {
                             editItem: item,
                             name: item.name,
                             calories: item.calories,
-                            quantity: item.quantity                           
+                            quantity: item.quantity
                           });
                         }}
                       >
@@ -98,6 +107,10 @@ class CurrentDay extends Component {
             <button
               className="btn btn-success"
               type="button"
+              onClick={() => {
+                this.editFoodItem(this.state.name, this.state.calories, this.state.quantity, this.state.editItem.id);
+                this.handleCloseModal();
+              }}
             >
               Save
             </button>
@@ -125,4 +138,4 @@ class CurrentDay extends Component {
   }
 }
 
-export default connect(null, { deleteFoodItem })(CurrentDay);
+export default connect(null, { deleteFoodItem, editItem })(CurrentDay);
