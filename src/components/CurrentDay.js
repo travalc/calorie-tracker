@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { firebaseApp, firebaseDatabase } from '../firebase'
 import ReactModal from 'react-modal';
+import moment from 'moment';
 import Search from './Search';
 import ManualAdd from './ManualAdd';
 import { connect } from 'react-redux';
@@ -14,6 +16,7 @@ class CurrentDay extends Component {
       quantity: '',
       name: '',
       calories: '',
+      date: ''
     }
   }
 
@@ -37,10 +40,33 @@ class CurrentDay extends Component {
     this.props.editItem(item);
   }
 
+  addDay() {
+    const userId = firebaseApp.auth().currentUser.uid;
+    const foods = this.props.foods.foodItems;
+    const totalCalories = this.props.foods .totalCalories;
+    const date = this.state.date;
+
+    const day = {
+      date: date,
+      foods: foods,
+      totalCalories: totalCalories
+    }
+
+    console.log(day);
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div style={{padding: '20px'}}>
-        <h4>What You Have Eaten Today</h4>
+        <input
+          type="date"
+          onChange={event => {
+            this.setState({date: moment(event.target.value).format("MMMM Do YYYY")});
+            console.log(event.target.value);
+          }}
+        />
+        <h4>What You Have Eaten Today, {this.state.date}</h4>
         <ManualAdd />
         <Search />
         <ul style={{listStyleType: 'none'}}>
@@ -84,6 +110,8 @@ class CurrentDay extends Component {
         <p><strong>Total Calories For Today:</strong> {this.props.foods.totalCalories}</p>
         <button
           className="btn btn-success"
+          type="button"
+          onClick={() => this.addDay()}
         >
           Submit
         </button>
