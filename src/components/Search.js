@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import { connect } from 'react-redux';
 import { addFoodItem } from '../actions';
 
+
 class Today extends Component {
   constructor(props) {
     super(props);
@@ -85,6 +86,7 @@ class Today extends Component {
           >
             Search
           </button>
+
         </div>
         <ReactModal
           isOpen={this.state.showModal}

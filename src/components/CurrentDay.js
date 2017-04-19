@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import Search from './Search';
+import ManualAdd from './ManualAdd';
 import { connect } from 'react-redux';
 import { deleteFoodItem, editItem } from '../actions';
 
@@ -40,6 +41,7 @@ class CurrentDay extends Component {
     return (
       <div style={{padding: '20px'}}>
         <h4>What You Have Eaten Today</h4>
+        <ManualAdd />
         <Search />
         <ul style={{listStyleType: 'none'}}>
           {
