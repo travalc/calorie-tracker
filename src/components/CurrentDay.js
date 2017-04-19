@@ -53,6 +53,7 @@ class CurrentDay extends Component {
     }
 
     console.log(day);
+    firebaseDatabase.ref('users/' + userId + '/' + 'entries').push(day);
   }
 
   render() {
