@@ -37,8 +37,6 @@ class CurrentDay extends Component {
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state.quantity);
     return (
       <div style={{padding: '20px'}}>
         <h4>What You Have Eaten Today</h4>
@@ -82,6 +80,11 @@ class CurrentDay extends Component {
           }
         </ul>
         <p><strong>Total Calories For Today:</strong> {this.props.foods.totalCalories}</p>
+        <button
+          className="btn btn-success"
+        >
+          Submit
+        </button>
 
       {
         //Editing Modal

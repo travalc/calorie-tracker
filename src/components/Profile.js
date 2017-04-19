@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { submitProfile, loadProfile } from '../actions';
 import { firebaseApp, firebaseDatabase } from '../firebase';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router';
 
 class Profile extends Component {
   constructor(props) {

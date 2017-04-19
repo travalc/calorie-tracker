@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { firebaseApp, firebaseDatabase } from '../firebase';
-import { browserHistory, Link } from 'react-router';
+import { firebaseApp } from '../firebase';
+import { Link } from 'react-router';
 import AboutSection from './AboutSection';
 import CurrentDay from './CurrentDay';
 

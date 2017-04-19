@@ -164,6 +164,7 @@ class Today extends Component {
           >
             <img
               src="https://d2eawub7utcl6.cloudfront.net/images/poweredby_nutritionix_api.png"
+              alt="Nutritionix logo"
             />
           </a>
           <button

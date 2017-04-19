@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class AboutSection extends Component {
   render() {
-    console.log(this.props.profile.height);
     return (
       <div className="about" style={{padding: '20px'}}>
         <h3>About You</h3>
