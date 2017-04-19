@@ -53,7 +53,9 @@ class CurrentDay extends Component {
                       <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
                       <span style={{display: 'block'}}><strong>Servings:</strong> {item.quantity}</span>
                       <span style={{display: 'block'}}><strong>Total Calories:</strong> {item.totalCalories}</span>
-                      <div
+
+                      <span
+                        className="glyphicon glyphicon-pencil"
                         onClick={() => {
                           this.handleOpenModal();
                           this.setState({
@@ -65,9 +67,13 @@ class CurrentDay extends Component {
                           });
                         }}
                       >
-                        <span className="glyphicon glyphicon-pencil"></span>
-                      </div>
-
+                      </span>
+                      <span
+                        className="glyphicon glyphicon-remove"
+                        onClick={() => this.props.deleteFoodItem(item)}
+                        style={{marginLeft: '5px'}}
+                      >
+                      </span>
                     </li>
                   )
                 })
