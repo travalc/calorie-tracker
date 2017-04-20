@@ -5,7 +5,7 @@ import moment from 'moment';
 import Search from './Search';
 import ManualAdd from './ManualAdd';
 import { connect } from 'react-redux';
-import { deleteFoodItem, editItem } from '../actions';
+import { deleteFoodItem, editItem, deleteCurrentDay } from '../actions';
 
 class CurrentDay extends Component {
   constructor(props) {
@@ -54,6 +54,8 @@ class CurrentDay extends Component {
 
     console.log(day);
     firebaseDatabase.ref('users/' + userId + '/' + 'entries').push(day);
+    this.setState({date: ''});
+    this.props.deleteCurrentDay();
   }
 
   render() {
@@ -115,6 +117,13 @@ class CurrentDay extends Component {
           onClick={() => this.addDay()}
         >
           Submit
+        </button>
+        <button
+          className="btn btn-danger"
+          type="button"
+          onClick={() => this.props.deleteCurrentDay()}
+        >
+          Delete All
         </button>
 
       {
@@ -187,4 +196,4 @@ class CurrentDay extends Component {
   }
 }
 
-export default connect(null, { deleteFoodItem, editItem })(CurrentDay);
+export default connect(null, { deleteFoodItem, editItem, deleteCurrentDay })(CurrentDay);

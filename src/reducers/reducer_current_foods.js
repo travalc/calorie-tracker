@@ -1,4 +1,4 @@
-import { ADD_FOOD_ITEM, DELETE_FOOD_ITEM, EDIT_FOOD_ITEM } from '../constants';
+import { ADD_FOOD_ITEM, DELETE_FOOD_ITEM, EDIT_FOOD_ITEM, DELETE_CURRENT_DAY } from '../constants';
 
 const editFood = (foods =[], item) => {
   return foods.map(food => {
@@ -41,11 +41,16 @@ export default (state = {foodItems: [], totalCalories: 0}, action) => {
       }
       return currentDayFoods;
     case EDIT_FOOD_ITEM:
-
       const oldItemCalories = getOldCalories(state.foodItems, action.foodItem.id);
       currentDayFoods = {
         foodItems: editFood(state.foodItems, action.foodItem),
         totalCalories: calories - oldItemCalories + action.foodItem.totalCalories
+      }
+      return currentDayFoods;
+    case DELETE_CURRENT_DAY:
+      currentDayFoods = {
+        foodItems: [],
+        totalCalories: 0
       }
       return currentDayFoods;
     default:
