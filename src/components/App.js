@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { firebaseApp } from '../firebase';
+import { firebaseApp, firebaseDatabase } from '../firebase';
 import { Link } from 'react-router';
 import AboutSection from './AboutSection';
 import CurrentDay from './CurrentDay';
+import History from './History';
 
 class App extends Component {
   signOut() {
@@ -17,6 +18,8 @@ class App extends Component {
         <AboutSection profile={this.props.state.profile} />
         <hr />
         <CurrentDay foods={this.props.state.currentDayFoods}/>
+        <hr />
+        <History />
         <hr />
         <button
           className="btn btn-danger"

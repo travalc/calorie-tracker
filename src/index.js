@@ -35,8 +35,20 @@ firebaseApp.auth().onAuthStateChanged(user => {
       }
       else {
         const profileInfo = snap.val().profile;
+        let entries = [];
+
         store.dispatch(loadProfile(profileInfo));
+
+        snap.forEach(child => {
+          if (child.key === 'entries') {
+            child.forEach(entry => {
+              entries.push(entry.val());
+            })
+          }
+        })
+
         browserHistory.push('/App');
+        console.log(entries);
       }
     })
 
