@@ -52,10 +52,14 @@ class CurrentDay extends Component {
       totalCalories: totalCalories
     }
 
-    console.log(day);
-    firebaseDatabase.ref('users/' + userId + '/' + 'entries').push(day);
-    this.setState({date: ''});
-    this.props.deleteCurrentDay();
+    if (foods.length > 0 && date.length > 0) {
+      firebaseDatabase.ref('users/' + userId + '/' + 'entries').push(day);
+      this.setState({date: ''});
+      this.props.deleteCurrentDay();
+    }
+    else {
+      alert('Entry needs a date and food entries');
+    }
   }
 
   render() {
