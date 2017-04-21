@@ -100,6 +100,9 @@ firebaseApp.auth().onAuthStateChanged(user => {
           convertDate(dateArray[0], dateArray[1]);
           entry.timeDiff = Date.UTC(year, month, day);
         })
+        entries.sort((a, b) => {
+          return b.timeDiff - a.timeDiff;
+        });
         console.log(entries);
       }
     })
