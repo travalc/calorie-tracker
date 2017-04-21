@@ -48,6 +48,58 @@ firebaseApp.auth().onAuthStateChanged(user => {
         })
 
         browserHistory.push('/App');
+        entries.forEach(entry => {
+          const dateArray = entry.date.split(' ');
+          let month = null;
+          let day = null;
+          let year = Number(dateArray[2]);
+
+          function convertDate (m, d) {
+            switch (m) {
+              case 'January':
+                month = 0;
+                break;
+              case 'February':
+                month = 1;
+                break;
+              case 'March':
+                month = 2;
+                break;
+              case 'April':
+                month = 3;
+                break;
+              case 'May':
+                month = 4;
+                break;
+              case 'June':
+                month = 5;
+                break;
+              case 'July':
+                month = 6;
+                break;
+              case 'August':
+                month = 7;
+                break;
+              case 'September':
+                month = 8;
+                break;
+              case 'October':
+                month = 9;
+                break;
+              case 'November':
+                month = 10;
+                break;
+              case 'December':
+                month = 11;
+                break;
+              default:
+                month = null
+            }
+            day = Number(d.slice(0, -2));
+          }
+          convertDate(dateArray[0], dateArray[1]);
+          entry.timeDiff = Date.UTC(year, month, day);
+        })
         console.log(entries);
       }
     })

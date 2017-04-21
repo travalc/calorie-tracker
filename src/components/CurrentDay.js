@@ -16,7 +16,8 @@ class CurrentDay extends Component {
       quantity: '',
       name: '',
       calories: '',
-      date: ''
+      date: '',
+      dateSinceEpoch:''
     }
   }
 
@@ -69,7 +70,10 @@ class CurrentDay extends Component {
         <input
           type="date"
           onChange={event => {
-            this.setState({date: moment(event.target.value).format("MMMM Do YYYY")});
+            this.setState({
+              date: moment(event.target.value).format("MMMM Do YYYY"),
+
+            });
             console.log(event.target.value);
           }}
         />
