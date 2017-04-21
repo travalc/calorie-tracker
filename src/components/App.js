@@ -19,7 +19,7 @@ class App extends Component {
         <hr />
         <CurrentDay foods={this.props.state.currentDayFoods}/>
         <hr />
-        <History />
+        <History entries={this.props.state.history} />
         <hr />
         <button
           className="btn btn-danger"
