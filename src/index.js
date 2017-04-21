@@ -42,7 +42,9 @@ firebaseApp.auth().onAuthStateChanged(user => {
         snap.forEach(child => {
           if (child.key === 'entries') {
             child.forEach(entry => {
-              entries.push(entry.val());
+              let entryItem = entry.val();
+              entryItem.key = entry.key
+              entries.push(entryItem);
             })
           }
         })
