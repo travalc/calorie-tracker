@@ -1,4 +1,4 @@
-import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE, ADD_FOOD_ITEM, DELETE_FOOD_ITEM, EDIT_FOOD_ITEM, DELETE_CURRENT_DAY } from '../constants';
+import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE, ADD_FOOD_ITEM, DELETE_FOOD_ITEM, EDIT_FOOD_ITEM, DELETE_CURRENT_DAY, LOAD_HISTORY } from '../constants';
 
 export function updateUser(email) {
   const action = {
@@ -53,4 +53,12 @@ export function deleteCurrentDay() {
     type: DELETE_CURRENT_DAY,
   }
   return action;
+}
+
+export function loadHistory(array) {
+  const action = {
+    type: LOAD_HISTORY,
+    entries: array
+  }
+  return action
 }

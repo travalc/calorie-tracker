@@ -5,3 +5,4 @@ export const ADD_FOOD_ITEM = 'ADD_FOOD_ITEM';
 export const DELETE_FOOD_ITEM = 'DELETE_FOOD_ITEM';
 export const EDIT_FOOD_ITEM = 'EDIT_FOOD_ITEM';
 export const DELETE_CURRENT_DAY = 'DELETE_CURRENT_DAY';
+export const LOAD_HISTORY = 'LOAD_HISTORY';

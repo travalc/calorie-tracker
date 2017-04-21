@@ -9,7 +9,7 @@ import App from './components/App';
 import Profile from './components/Profile';
 import Register from './components/Register';
 import reducer from './reducers';
-import { updateUser, loadProfile } from './actions';
+import { updateUser, loadProfile, loadHistory } from './actions';
 
 const store = createStore(reducer);
 
@@ -106,6 +106,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
           return b.timeDiff - a.timeDiff;
         });
         console.log(entries);
+        store.dispatch(loadHistory(entries));
       }
     })
 
