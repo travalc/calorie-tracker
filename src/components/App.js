@@ -15,7 +15,7 @@ class App extends Component {
     console.log(this.props.state);
     return (
       <div>
-        <AboutSection profile={this.props.state.profile} />
+        <AboutSection profile={this.props.state.profile} entries={this.props.state.history} />
         <hr />
         <CurrentDay foods={this.props.state.currentDayFoods}/>
         <hr />
