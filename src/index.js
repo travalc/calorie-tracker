@@ -8,6 +8,9 @@ import Welcome from './components/Welcome';
 import App from './components/App';
 import Profile from './components/Profile';
 import Register from './components/Register';
+import AboutSection from './components/AboutSection';
+import CurrentDay from './components/CurrentDay';
+import History from './components/History';
 import reducer from './reducers';
 import { updateUser, loadProfile, loadHistory } from './actions';
 
@@ -122,9 +125,13 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Welcome} />
-      <Route path="/App" component={App} />
-      <Route path="/profile" component={Profile} />
+      <Route path="/App" component={App}>
+        <Route path="/AboutSection" component={AboutSection} />
+        <Route path="/CurrentDay" component={CurrentDay} />
+        <Route path="/History" component={History} />
+      </Route>
       <Route path="/register" component={Register} />
+      <Route path="/profile" component={Profile} />
     </Router>
   </Provider>
   , document.getElementById('root')

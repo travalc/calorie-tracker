@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { firebaseApp, firebaseDatabase } from '../firebase';
+import { firebaseApp } from '../firebase';
 import { Link } from 'react-router';
-import AboutSection from './AboutSection';
-import CurrentDay from './CurrentDay';
-import History from './History';
 
 class App extends Component {
   signOut() {
@@ -15,19 +12,20 @@ class App extends Component {
     console.log(this.props.state);
     return (
       <div>
-        <AboutSection profile={this.props.state.profile} entries={this.props.state.history} />
-        <hr />
-        <CurrentDay foods={this.props.state.currentDayFoods}/>
-        <hr />
-        <History entries={this.props.state.history} />
-        <hr />
+
+
         <button
           className="btn btn-danger"
           onClick={() => this.signOut()}
         >
           Sign Out
         </button>
+        <div><Link to={'/AboutSection'}>About</Link></div>
+        <div><Link to={'/CurrentDay'}>Current Day</Link></div>
+        <div><Link to={'/History'}>History</Link></div>
         <div><Link to={'/profile'}>Update Profile</Link></div>
+
+        {this.props.children}
       </div>
     )
   }

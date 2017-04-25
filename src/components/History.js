@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 
 class History extends Component {
   render() {
-    const entries = this.props.entries;
+    const entries = this.props.state.history;
     return (
       <div>
         <ul>
@@ -31,4 +32,10 @@ class History extends Component {
   }
 }
 
-export default History;
+function mapStateToProps(state) {
+  return {
+    state
+  }
+}
+
+export default connect(mapStateToProps, null)(History);

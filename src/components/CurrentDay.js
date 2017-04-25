@@ -43,8 +43,8 @@ class CurrentDay extends Component {
 
   addDay() {
     const userId = firebaseApp.auth().currentUser.uid;
-    const foods = this.props.foods.foodItems;
-    const totalCalories = this.props.foods .totalCalories;
+    const foods = this.props.state.currentDayFoods.foodItems;
+    const totalCalories = this.props.state.currentDayFoods.totalCalories;
     const date = this.state.date;
 
     const day = {
@@ -54,7 +54,7 @@ class CurrentDay extends Component {
     }
 
     if (foods.length > 0 && date.length > 0) {
-      firebaseDatabase.ref('users/' + userId + '/' + 'entries').push(day);
+      firebaseDatabase.ref('users/' + userId + '/entries').push(day);
       this.setState({date: ''});
       this.props.deleteCurrentDay();
     }
@@ -82,9 +82,9 @@ class CurrentDay extends Component {
         <Search />
         <ul style={{listStyleType: 'none'}}>
           {
-            this.props.foods.foodItems.length > 0
+            this.props.state.currentDayFoods.foodItems.length > 0
               ?
-                this.props.foods.foodItems.map(item => {
+                this.props.state.currentDayFoods.foodItems.map(item => {
                   return (
                     <li key={item.id} style={{margin: '15px'}}>
                       <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
@@ -118,7 +118,7 @@ class CurrentDay extends Component {
                 <li>Nothing Yet</li>
           }
         </ul>
-        <p><strong>Total Calories For Today:</strong> {this.props.foods.totalCalories}</p>
+        <p><strong>Total Calories For Today:</strong> {this.props.state.currentDayFoods.totalCalories}</p>
         <button
           className="btn btn-success"
           type="button"
@@ -204,4 +204,10 @@ class CurrentDay extends Component {
   }
 }
 
-export default connect(null, { deleteFoodItem, editItem, deleteCurrentDay })(CurrentDay);
+function mapStateToProps(state) {
+  return {
+    state
+  }
+}
+
+export default connect(mapStateToProps, { deleteFoodItem, editItem, deleteCurrentDay })(CurrentDay);
