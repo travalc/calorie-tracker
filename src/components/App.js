@@ -17,13 +17,14 @@ class App extends Component {
           <div><Link to={'/CurrentDay'}>Current Day</Link></div>
           <div><Link to={'/History'}>History</Link></div>
           <div><Link to={'/profile'}>Update Profile</Link></div>
-          <button
-            className="btn btn-danger"
-            onClick={() => this.signOut()}
-          >
-            Sign Out
-          </button>
-      
+          <div>
+            <Link to={'/'}
+              onClick={() => this.signOut()}
+            >
+              Sign Out
+            </Link>
+          </div>
+
         {this.props.children}
       </div>
     )
