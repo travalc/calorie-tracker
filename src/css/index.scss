@@ -120,3 +120,19 @@ body {
     }
   }
 }
+
+/* App */
+
+.navigation {
+  .nav-item:visited {
+    text-decoration: none;
+    color: white;
+  }
+  .nav-item:focus {
+    text-decoration: none;
+    color: white;
+  }
+  .nav-item:hover {
+    text-decoration: none;
+  }
+}

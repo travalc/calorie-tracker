@@ -55,4 +55,14 @@ body {
   .Profile .height-input {
     width: 80%; } }
 
+/* App */
+.navigation .nav-item:visited {
+  text-decoration: none;
+  color: white; }
+.navigation .nav-item:focus {
+  text-decoration: none;
+  color: white; }
+.navigation .nav-item:hover {
+  text-decoration: none; }
+
 /*# sourceMappingURL=index.css.map */
