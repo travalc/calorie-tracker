@@ -12,19 +12,19 @@ class App extends Component {
     console.log(this.props.state);
     return (
       <div>
-
-          <div><Link to={'/Home'}>Home</Link></div>
-          <div><Link to={'/CurrentDay'}>Current Day</Link></div>
-          <div><Link to={'/History'}>History</Link></div>
-          <div><Link to={'/profile'}>Update Profile</Link></div>
-          <div>
+        <nav className="w3-bar w3-black">
+          <div className="w3-bar-item w3-button"><Link to={'/Home'}>Home</Link></div>
+          <div className="w3-bar-item w3-button"><Link to={'/CurrentDay'}>Current Day</Link></div>
+          <div className="w3-bar-item w3-button"><Link to={'/History'}>History</Link></div>
+          <div className="w3-bar-item w3-button"><Link to={'/profile'}>Update Profile</Link></div>
+          <div className="w3-bar-item w3-button">
             <Link to={'/'}
               onClick={() => this.signOut()}
             >
               Sign Out
             </Link>
           </div>
-
+        </nav>
         {this.props.children}
       </div>
     )
