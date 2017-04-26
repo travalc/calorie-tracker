@@ -8,7 +8,7 @@
   line-height: 1.25em; }
 
 body {
-  background-color: #e2e234; }
+  background-color: #eaf984; }
 
 /* Welcome page */
 .Welcome .welcome-content {
@@ -21,10 +21,21 @@ body {
     margin: 5px; } }
 @media (max-width: 450px) {
   .Welcome .login-input {
-    margin-top: 5px; } }
+    margin-top: 5px;
+    margin-bottom: 5px; } }
 @media (max-width: 450px) {
   .Welcome .login-field {
     width: 65%;
     margin-left: 15%; } }
+
+/* Register Page */
+.Register .register-content {
+  margin-top: 20%;
+  text-align: center; }
+  .Register .register-content .register-input, .Register .register-content label {
+    margin-top: 10px; }
+  .Register .register-content .register-input-field {
+    width: 75%;
+    margin-left: 12.5%; }
 
 /*# sourceMappingURL=index.css.map */
