@@ -105,6 +105,7 @@ class History extends Component {
     console.log(this.state.currentItem);
     return (
       <div>
+        <div>Stats for {this.props.state.profile.name}</div>
         <div>Target Calories Per day to {this.props.state.profile.goal} per week: {this.getTargetCalories()}</div>
         <div>Average Calories Per day (based on the last week): {this.getAverageCaloriesPerDay()}</div>
         <ul style={{listStyleType: 'none'}}>

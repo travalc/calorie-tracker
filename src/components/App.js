@@ -13,18 +13,17 @@ class App extends Component {
     return (
       <div>
 
-
-        <button
-          className="btn btn-danger"
-          onClick={() => this.signOut()}
-        >
-          Sign Out
-        </button>
-        <div><Link to={'/Home'}>Home</Link></div>
-        <div><Link to={'/CurrentDay'}>Current Day</Link></div>
-        <div><Link to={'/History'}>History</Link></div>
-        <div><Link to={'/profile'}>Update Profile</Link></div>
-
+          <div><Link to={'/Home'}>Home</Link></div>
+          <div><Link to={'/CurrentDay'}>Current Day</Link></div>
+          <div><Link to={'/History'}>History</Link></div>
+          <div><Link to={'/profile'}>Update Profile</Link></div>
+          <button
+            className="btn btn-danger"
+            onClick={() => this.signOut()}
+          >
+            Sign Out
+          </button>
+      
         {this.props.children}
       </div>
     )
