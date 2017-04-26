@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { firebaseApp, firebaseDatabase  } from './firebase';
+
 import Welcome from './components/Welcome';
 import App from './components/App';
 import Profile from './components/Profile';
@@ -13,6 +14,7 @@ import CurrentDay from './components/CurrentDay';
 import History from './components/History';
 import reducer from './reducers';
 import { updateUser, loadProfile, loadHistory } from './actions';
+import './css/index.css';
 
 const store = createStore(reducer);
 
@@ -124,7 +126,9 @@ firebaseApp.auth().onAuthStateChanged(user => {
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
+
       <Route path="/" component={Welcome} />
+
       <Route path="/App" component={App}>
         <Route path="/AboutSection" component={AboutSection} />
         <Route path="/CurrentDay" component={CurrentDay} />
