@@ -2,6 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 class AboutSection extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      averageCalories: '',
+      targetCalories: ''
+    }
+  }
+
+  componentWillMount() {
+    this.setState({
+      averageCalories: this.getAverageCaloriesPerDay(),
+      targetCalories: this.getTargetCalories()
+    })
+  }
+
   getAverageCaloriesPerDay() {
     let total = 0;
     let average = null;
@@ -88,14 +103,14 @@ class AboutSection extends Component {
           <li><strong>Sex:</strong> {this.props.state.profile.sex}</li>
           <li><strong>Height:</strong> {this.props.state.profile.feet}ft. {this.props.state.profile.inches}in.</li>
           <li><strong>Weight:</strong> {this.props.state.profile.weight}lbs</li>
-          <li><strong>Target Caloric Intake:</strong> {this.getTargetCalories()} calories per day</li>
+          <li><strong>Target Caloric Intake:</strong> {this.state.targetCalories} calories per day</li>
           <li>
             {
               this.props.state.history.length < 7
                 ?
-                  <span><strong>Average Daily Calories:</strong> {this.getAverageCaloriesPerDay()} calories per day</span>
+                  <span><strong>Average Daily Calories:</strong> {this.state.averageCalories} calories per day</span>
                 :
-                  <span><strong>Average Daily Calories (based on last 7 days):</strong> {this.getAverageCaloriesPerDay()} calories per day</span>
+                  <span><strong>Average Daily Calories (based on last 7 days):</strong> {this.state.averageCalories} calories per day</span>
             }
           </li>
         </ul>
