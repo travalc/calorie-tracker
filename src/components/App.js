@@ -13,17 +13,17 @@ class App extends Component {
     return (
       <div>
         <nav className="w3-bar w3-black">
-          <div className="w3-bar-item w3-button"><Link to={'/Home'}>Home</Link></div>
-          <div className="w3-bar-item w3-button"><Link to={'/CurrentDay'}>Current Day</Link></div>
-          <div className="w3-bar-item w3-button"><Link to={'/History'}>History</Link></div>
-          <div className="w3-bar-item w3-button"><Link to={'/profile'}>Update Profile</Link></div>
-          <div className="w3-bar-item w3-button">
-            <Link to={'/'}
+          <Link to={'/Home'} className="w3-bar-item w3-button">Home</Link>
+          <Link to={'/CurrentDay'} className="w3-bar-item w3-button">Current Day</Link>
+          <Link to={'/History'} className="w3-bar-item w3-button">History</Link>
+          <Link to={'/profile'} className="w3-bar-item w3-button">Update Profile</Link>
+          <Link to={'/'}
+              className="w3-bar-item w3-button"
               onClick={() => this.signOut()}
             >
               Sign Out
-            </Link>
-          </div>
+          </Link>
+
         </nav>
         {this.props.children}
       </div>

@@ -133,9 +133,10 @@ ReactDOM.render(
         <Route path="/Home" component={Home} />
         <Route path="/CurrentDay" component={CurrentDay} />
         <Route path="/History" component={History} />
+        <Route path="/profile" component={Profile} />
       </Route>
       <Route path="/register" component={Register} />
-      <Route path="/profile" component={Profile} />
+
     </Router>
   </Provider>
   , document.getElementById('root')
