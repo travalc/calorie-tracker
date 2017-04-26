@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 class App extends Component {
   signOut() {
     firebaseApp.auth().signOut();
+    Location.reload();
   }
 
   render() {

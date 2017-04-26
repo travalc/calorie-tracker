@@ -56,6 +56,7 @@ class Profile extends Component {
 
   signOut() {
     firebaseApp.auth().signOut();
+    Location.reload();
   }
 
   render() {
@@ -65,7 +66,7 @@ class Profile extends Component {
       <div className="Profile">
         <div className="profile-content">
           {
-            this.props.state.newUser === true
+            this.props.state.profile.name === null
               ?
                 <h4>Please complete your profile, it is required. (you can update this any time)</h4>
               :
