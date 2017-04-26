@@ -59,96 +59,109 @@ class Profile extends Component {
     console.log(this.props);
     console.log(this.state);
     return (
-      <div>
-        <h4>Please complete your profile (you can update this any time)</h4>
-        <div className="form-group">
-          <label>Name:</label>
-          <input
-            className="form-control"
-            placeholder="First + Last"
-            value={this.state.name}
-            onChange={event => this.setState({name: event.target.value})}
-          />
-          <label>Age:</label>
-          <input
-            className="form-control"
-            placeholder="ex. 30"
-            value={this.state.age}
-            onChange={event => this.setState({age: event.target.value})}
-          />
-          <label>Sex: </label>
-          <select
-            value={this.state.sex}
-            onChange={event => this.setState({sex: event.target.value})}
-          >
-            <option value={null}>-</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-          <br />
-          <label>Height:</label>
-          <div className="form-inline">
-            <input
-              className="form-control"
-              placeholder="feet"
-              value={this.state.feet}
-              onChange={event => this.setState({feet: event.target.value})}
-            />
-            <input
-              className="form-control"
-              placeholder="inches"
-              value={this.state.inches}
-              onChange={event => this.setState({inches: event.target.value})}
-            />
-          </div>
-          <label>Current Weight:</label>
-          <input
-            className="form-control"
-            placeholder="weight in pounds"
-            value={this.state.weight}
-            onChange={event => this.setState({weight: event.target.value})}
-          />
-          <label>Activity Level: </label>
-          <select
-            value={this.state.activityLevel}
-            onChange={event => this.setState({activityLevel: event.target.value})}
-          >
-            <option value={null}>-</option>
-            <option value="sedentary">sedentary</option>
-            <option value="lightly active">lightly active</option>
-            <option value="moderately active">moderately active</option>
-            <option value="very active">very active</option>
-            <option value="extra active">extra active</option>
-          </select>
-          <br />
-          <label>Goal (Per Week):</label>
-          <select
-            value={this.state.goal}
-            onChange={event => this.setState({goal: event.target.value})}
-          >
-            <option value={null}>-</option>
-            <option value="lose 1 pound">lose 1 pound</option>
-            <option value="lose 2 pounds">lose 2 pounds</option>
-            <option value="gain 1 pound">gain 1 pound</option>
-            <option value="gain 2 pounds">gain 2 pounds</option>
-          </select>
-          <div className="form-inline">
-            <button
-              className="btn btn-primary"
-              type="button"
-              onClick={() => this.updateProfile()}
-            >
-              Save
-            </button>
-
-            {
-              this.props.state.newUser === false
+      <div className="Profile">
+        <div className="profile-content">
+          {
+            this.props.state.newUser === true
               ?
-                <div><Link to={'/App'}>Cancel</Link></div>
+                <h4>Please complete your profile, it is required. (you can update this any time)</h4>
               :
-                <div></div>
-            }
+                <h2><strong>Profile</strong></h2>
+          }
 
+          <div className="form-group">
+            <label>Name:</label>
+            <input
+              className="form-control profile-input profile-input-field"
+              placeholder="First + Last"
+              value={this.state.name}
+              onChange={event => this.setState({name: event.target.value})}
+            />
+            <label>Age:</label>
+            <input
+              className="form-control profile-input profile-input-field"
+              placeholder="ex. 30"
+              value={this.state.age}
+              onChange={event => this.setState({age: event.target.value})}
+            />
+            <label>Sex: </label>
+            <select
+              className="profile-input"
+              value={this.state.sex}
+              onChange={event => this.setState({sex: event.target.value})}
+            >
+              <option value={null}>-</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <br />
+            <label>Height (in feet and inches):</label>
+            <div className="form-inline">
+              <input
+                className="form-control profile-input height-input"
+                placeholder="feet"
+                value={this.state.feet}
+                onChange={event => this.setState({feet: event.target.value})}
+              />
+              <input
+                className="form-control profile-input height height-input"
+                placeholder="inches"
+                value={this.state.inches}
+                onChange={event => this.setState({inches: event.target.value})}
+              />
+            </div>
+            <label>Current Weight:</label>
+            <input
+              className="form-control profile-input profile-input-field"
+              placeholder="weight in pounds"
+              value={this.state.weight}
+              onChange={event => this.setState({weight: event.target.value})}
+            />
+            <label>Activity Level: </label>
+            <select
+              className="profile-input"
+              value={this.state.activityLevel}
+              onChange={event => this.setState({activityLevel: event.target.value})}
+            >
+              <option value={null}>-</option>
+              <option value="sedentary">sedentary</option>
+              <option value="lightly active">lightly active</option>
+              <option value="moderately active">moderately active</option>
+              <option value="very active">very active</option>
+              <option value="extra active">extra active</option>
+            </select>
+            <br />
+            <label>Goal (Per Week):</label>
+            <select
+              className="profile-input"
+              value={this.state.goal}
+              onChange={event => this.setState({goal: event.target.value})}
+            >
+              <option value={null}>-</option>
+              <option value="lose 1 pound">lose 1 pound</option>
+              <option value="lose 2 pounds">lose 2 pounds</option>
+              <option value="gain 1 pound">gain 1 pound</option>
+              <option value="gain 2 pounds">gain 2 pounds</option>
+            </select>
+            <div className="form-inline">
+              <button
+                className="profile-input"
+                className="btn btn-primary"
+                type="button"
+                onClick={() => this.updateProfile()}
+              >
+                Save
+              </button>
+
+              {
+                this.props.state.newUser === false
+                ?
+                  <div className="profile-input"><Link to={'/App'}>Cancel</Link></div>
+                :
+                  <div></div>
+              }
+
+            </div>
           </div>
         </div>
       </div>

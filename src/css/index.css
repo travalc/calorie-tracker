@@ -38,4 +38,21 @@ body {
     width: 75%;
     margin-left: 12.5%; }
 
+/* Profile Page */
+.Profile .profile-content {
+  margin-left: 10%; }
+  @media (max-width: 450px) {
+    .Profile .profile-content {
+      margin-top: 10%; } }
+  @media (min-width: 451px) {
+    .Profile .profile-content {
+      margin-top: 5%; } }
+.Profile .profile-input, .Profile label {
+  margin-top: 10px; }
+.Profile .profile-input-field {
+  width: 80%; }
+@media (max-width: 450px) {
+  .Profile .height-input {
+    width: 80%; } }
+
 /*# sourceMappingURL=index.css.map */

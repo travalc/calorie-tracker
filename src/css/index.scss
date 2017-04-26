@@ -92,3 +92,31 @@ body {
     }
   }
 }
+
+/* Profile Page */
+
+.Profile {
+  .profile-content {
+    margin-left: 10%;
+    @include smartphone {
+      margin-top: 10%;
+    }
+    @include tabletAndDesktop {
+      margin-top: 5%;
+    }
+  }
+
+  .profile-input, label {
+    margin-top: 10px;
+  }
+
+  .profile-input-field {
+    width: 80%;
+  }
+
+  .height-input {
+    @include smartphone {
+      width: 80%;
+    }
+  }
+}
