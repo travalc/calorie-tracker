@@ -164,8 +164,17 @@ body {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10%;
-    margin-left: 5%;
-
+    margin-left: 3%;
+    .box-button:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .box-link:hover {
+      text-decoration: none;
+    }
+    .box-button:focus {
+      text-decoration: none;
+    }
     .box-button {
       margin: 50px;
 

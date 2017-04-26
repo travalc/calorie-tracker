@@ -128,9 +128,9 @@ ReactDOM.render(
     <Router history={browserHistory}>
 
       <Route path="/" component={Welcome} />
-
+      <Route path="/Home" component={Home} />
       <Route path="/App" component={App}>
-        <Route path="/Home" component={Home} />
+
         <Route path="/CurrentDay" component={CurrentDay} />
         <Route path="/History" component={History} />
         <Route path="/profile" component={Profile} />
