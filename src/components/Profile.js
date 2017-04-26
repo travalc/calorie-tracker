@@ -20,7 +20,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    if (this.props.state.profile.hasOwnProperty('target')) { //sets default value for fields if data already exits in database
+    if (this.props.state.profile.hasOwnProperty('name')) { //sets default value for fields if data already exits in database
       this.props.submitProfile(false);
       this.setState ({
         name: this.props.state.profile.name,
@@ -46,13 +46,16 @@ class Profile extends Component {
       feet: this.state.feet,
       inches: this.state.inches,
       weight: this.state.weight,
-      target: this.state.target,
       activityLevel: this.state.activityLevel,
       goal: this.state.goal
     }
     firebaseDatabase.ref('users/' + userId).update({ profile });
     this.props.submitProfile(false);
 
+  }
+
+  signOut() {
+    firebaseApp.auth().signOut();
   }
 
   render() {
@@ -154,11 +157,11 @@ class Profile extends Component {
               </button>
 
               {
-                this.props.state.newUser === false
+                this.props.state.profile.name !== null
                 ?
                   <div className="profile-input"><Link to={'/Home'}>Cancel</Link></div>
                 :
-                  <div></div>
+                  <Link to={'/'} onClick={() => this.signOut()}>Sign Out</Link>
               }
 
             </div>

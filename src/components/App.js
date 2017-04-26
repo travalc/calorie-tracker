@@ -12,19 +12,26 @@ class App extends Component {
     console.log(this.props.state);
     return (
       <div>
-        <nav className="w3-bar w3-black navigation">
-          <Link to={'/Home'} className="w3-bar-item w3-button w3-mobile  w3-hover-black w3-hover-text-yellow nav-item">Home</Link>
-          <Link to={'/CurrentDay'} className="w3-bar-item w3-button w3-mobile w3-hover-black w3-hover-text-yellow nav-item">Current Day</Link>
-          <Link to={'/History'} className="w3-bar-item w3-button w3-mobile w3-hover-black w3-hover-text-yellow nav-item">History</Link>
-          <Link to={'/profile'} className="w3-bar-item w3-button w3-mobile w3-hover-black w3-hover-text-yellow nav-item">Update Profile</Link>
-          <Link to={'/'}
-              className="w3-bar-item w3-button w3-mobile w3-hover-black w3-hover-text-yellow nav-item"
-              onClick={() => this.signOut()}
-            >
-              Sign Out
-          </Link>
+        {
+          this.props.state.profile.name !== null
+            ?
+              <nav className="w3-bar w3-black navigation">
+                <Link to={'/Home'} className="w3-bar-item w3-button w3-mobile  w3-hover-black w3-hover-text-yellow nav-item">Home</Link>
+                <Link to={'/CurrentDay'} className="w3-bar-item w3-button w3-mobile w3-hover-black w3-hover-text-yellow nav-item">Current Day</Link>
+                <Link to={'/History'} className="w3-bar-item w3-button w3-mobile w3-hover-black w3-hover-text-yellow nav-item">History</Link>
+                <Link to={'/profile'} className="w3-bar-item w3-button w3-mobile w3-hover-black w3-hover-text-yellow nav-item">Update Profile</Link>
+                <Link to={'/'}
+                    className="w3-bar-item w3-button w3-mobile w3-hover-black w3-hover-text-yellow nav-item"
+                    onClick={() => this.signOut()}
+                  >
+                    Sign Out
+                </Link>
 
-        </nav>
+              </nav>
+            :
+              <div></div>
+        }
+
         {this.props.children}
       </div>
     )
