@@ -28,25 +28,25 @@ class Home extends Component {
         <div className="box-container">
           <Link className="box-link" to={'/CurrentDay'}>
             <div className="box-button">
-              <span>Add Foods For Today</span>
+              <span className="button-title">Add Foods For Today</span>
               <span className="fa fa-plus button-icon"></span>
             </div>
           </Link>
           <Link className="box-link" to={'/History'}>
             <div className="box-button">
-              <span>View Your Progress/Stats</span>
+              <span className="button-title">View Your Progress/Stats</span>
               <span className="fa fa-line-chart button-icon"></span>
             </div>
           </Link>
           <Link className="box-link" to={'/Profile'}>
             <div className="box-button">
-              <span>Edit Your Profile</span>
+              <span className="button-title">Edit Your Profile</span>
               <span className="fa fa-pencil button-icon"></span>
             </div>
           </Link>
           <Link className="box-link" to={'/'}>
             <div onClick={() => this.signOut()} className="box-button">
-              <span>Sign Out</span>
+              <span className="button-title">Sign Out</span>
               <span className="fa fa-power-off button-icon"></span>
             </div>
           </Link>
