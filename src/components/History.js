@@ -22,9 +22,10 @@ class History extends Component {
 
   render() {
     const entries = this.props.state.history;
+    console.log(this.state.currentItem);
     return (
       <div>
-        <ul style={{display: 'block'}}>
+        <ul style={{listStyleType: 'none'}}>
           {
             entries.length > 0
               ?

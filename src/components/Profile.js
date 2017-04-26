@@ -14,7 +14,8 @@ class Profile extends Component {
       feet: '',
       inches: '',
       weight: '',
-      target: '',
+      activityLevel: '',
+      goal: ''
     }
   }
 
@@ -29,6 +30,8 @@ class Profile extends Component {
         inches: this.props.state.profile.inches,
         weight: this.props.state.profile.weight,
         target: this.props.state.profile.target,
+        activityLevel: this.props.state.profile.activityLevel,
+        goal: this.props.state.profile.goal
       });
     }
 
@@ -43,7 +46,9 @@ class Profile extends Component {
       feet: this.state.feet,
       inches: this.state.inches,
       weight: this.state.weight,
-      target: this.state.target
+      target: this.state.target,
+      activityLevel: this.state.activityLevel,
+      goal: this.state.goal
     }
     firebaseDatabase.ref('users/' + userId).update({ profile });
     this.props.submitProfile(false);
@@ -52,6 +57,7 @@ class Profile extends Component {
 
   render() {
     console.log(this.props);
+    console.log(this.state);
     return (
       <div>
         <h4>Please complete your profile (you can update this any time)</h4>
@@ -70,7 +76,7 @@ class Profile extends Component {
             value={this.state.age}
             onChange={event => this.setState({age: event.target.value})}
           />
-          <label>Sex:</label>
+          <label>Sex: </label>
           <select
             value={this.state.sex}
             onChange={event => this.setState({sex: event.target.value})}
@@ -102,13 +108,30 @@ class Profile extends Component {
             value={this.state.weight}
             onChange={event => this.setState({weight: event.target.value})}
           />
-          <label>Target Daily Caloric Intake:</label>
-          <input
-            className="form-control"
-            placeholder="ex. 2000"
-            value={this.state.target}
-            onChange={event => this.setState({target: event.target.value})}
-          />
+          <label>Activity Level: </label>
+          <select
+            value={this.state.activityLevel}
+            onChange={event => this.setState({activityLevel: event.target.value})}
+          >
+            <option value={null}>-</option>
+            <option value="sedentary">sedentary</option>
+            <option value="lightly active">lightly active</option>
+            <option value="moderately active">moderately active</option>
+            <option value="very active">very active</option>
+            <option value="extra active">extra active</option>
+          </select>
+          <br />
+          <label>Goal (Per Week):</label>
+          <select
+            value={this.state.goal}
+            onChange={event => this.setState({goal: event.target.value})}
+          >
+            <option value={null}>-</option>
+            <option value="lose 1 pound">lose 1 pound</option>
+            <option value="lose 2 pounds">lose 2 pounds</option>
+            <option value="gain 1 pound">gain 1 pound</option>
+            <option value="gain 2 pounds">gain 2 pounds</option>
+          </select>
           <div className="form-inline">
             <button
               className="btn btn-primary"
