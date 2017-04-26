@@ -154,18 +154,25 @@ body {
   text-align: center;
 
   .home-head {
-
+    text-align: center;
     h2 {
       font-size: 50px;
+      @include smartphone {
+        font-size: 30px;
+      }
     }
     @include largeScreen {
       margin-right: 15%;
     }
+
   }
 
   .box-container {
+
     display: flex;
     flex-wrap: wrap;
+
+
     margin-top: 10%;
     margin-left: 3%;
     .box-button:hover {
@@ -175,19 +182,44 @@ body {
     .box-link:hover {
       text-decoration: none;
     }
-    .box-button:focus {
-      text-decoration: none;
+    .box-link {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding: 0;
+      width: 230;
+      height: 230;
+      @include smartphone {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 45px;
+        margin-left: 12px;
+      }
     }
     .box-button {
+      width: 230px;
+      height: 230px;
+      @include smartphone {
+        padding-top: 20%;
+        width: 150px;
+        height: 150px;
+        margin: 20px;
+      }
+      padding-top: 20%;
       margin: 50px;
-
+      background-color: #edfff4;
+      border-radius: 50%;
+      border-style:outset;
+      @include smartphone {
+        margin-left: 0;
+      }
       .button-icon {
         display: block;
         font-size: 100px;
+        @include smartphone {
+          font-size: 60px;
+        }
       }
-      @include smartphone {
-        width: 600px;
-      }
+
     }
   }
 }

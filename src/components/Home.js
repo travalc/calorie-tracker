@@ -44,10 +44,12 @@ class Home extends Component {
               <span className="fa fa-pencil button-icon"></span>
             </div>
           </Link>
-          <div onClick={() => this.signOut()} className="box-button">
-            <span>Sign Out</span>
-            <span className="fa fa-power-off button-icon"></span>
-          </div>
+          <Link className="box-link" to={'/'}>
+            <div onClick={() => this.signOut()} className="box-button">
+              <span>Sign Out</span>
+              <span className="fa fa-power-off button-icon"></span>
+            </div>
+          </Link>
         </div>
       </div>
     )
