@@ -162,7 +162,12 @@ class Profile extends Component {
                 ?
                   <div className="profile-input"><Link to={'/Home'}>Cancel</Link></div>
                 :
-                  <Link to={'/'} onClick={() => this.signOut()}>Sign Out</Link>
+                  <Link
+                    to={'/'}
+                    onClick={() => this.signOut()}
+                  >
+                    <button className="btn btn-danger">Sign Out</button>
+                  </Link>
               }
 
             </div>

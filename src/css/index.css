@@ -54,6 +54,8 @@ body {
 @media (max-width: 450px) {
   .Profile .height-input {
     width: 80%; } }
+.Profile button {
+  margin: 10px; }
 
 /* App */
 .navigation .nav-item:visited {
