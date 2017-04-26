@@ -5,13 +5,13 @@ class AboutSection extends Component {
   getAverageCaloriesPerDay() {
     let total = 0;
     let average = null;
-    if (this.props.state.history.length < 7 && this.props.state.history.length > 0) {
+    if (this.props.state.history.length < 7 && this.props.state.history.length > 0) { //gets average if there is a history, but less than 7 days
       this.props.state.history.forEach(entry => {
         total += entry.totalCalories;
       });
       average = Math.round(total / this.props.state.history.length);
     }
-    else if (this.props.state.history.length >= 7){
+    else if (this.props.state.history.length >= 7){ // gets average for last 7 days
       const firstSevenEntries = this.props.state.history.slice(0, 8);
       firstSevenEntries.forEach(entry => {
         total += entry.totalCalories;

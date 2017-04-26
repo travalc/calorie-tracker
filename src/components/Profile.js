@@ -20,7 +20,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    if (this.props.state.profile.hasOwnProperty('target')) {
+    if (this.props.state.profile.hasOwnProperty('target')) { //sets default value for fields if data already exits in database
       this.props.submitProfile(false);
       this.setState ({
         name: this.props.state.profile.name,
@@ -37,7 +37,7 @@ class Profile extends Component {
 
   }
 
-  updateProfile() {
+  updateProfile() { //Submits profile data to database
     const userId = firebaseApp.auth().currentUser.uid;
     const profile = {
       name: this.state.name,

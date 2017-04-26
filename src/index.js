@@ -20,29 +20,29 @@ const store = createStore(reducer);
 
 firebaseApp.auth().onAuthStateChanged(user => {
 
-  if (user) {
+  if (user) { // User exists?
     const { email } = user;
-    store.dispatch(updateUser(email));
+    store.dispatch(updateUser(email)); //send current user to app state
     console.log('logged in');
     const userId = firebaseApp.auth().currentUser.uid;
 
     firebaseDatabase.ref('users/' + userId).on('value', snap => {
-      if (snap.val() === null ) {
-        firebaseDatabase.ref('users/' + userId).set({
+      if (snap.val() === null ) { //if user's data is not already in database
+        firebaseDatabase.ref('users/' + userId).set({ //create a reference
           email
         });
-        browserHistory.push('/profile');
+        browserHistory.push('/profile'); //require user to fill out profile
       }
-      else if (snap.val() !== null && !snap.val().profile) {
-        browserHistory.push('profile');
+      else if (snap.val() !== null && !snap.val().profile) { //if user exists but hasn't filled out profile
+        browserHistory.push('profile'); //require profile submission
       }
-      else {
+      else { //if user data and profile are in database
         const profileInfo = snap.val().profile;
         let entries = [];
 
-        store.dispatch(loadProfile(profileInfo));
+        store.dispatch(loadProfile(profileInfo)); // send profile info to app state
 
-        snap.forEach(child => {
+        snap.forEach(child => { //load previous day history from database
           if (child.key === 'entries') {
             child.forEach(entry => {
               let entryItem = entry.val();
@@ -59,7 +59,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
           let day = null;
           let year = Number(dateArray[2]);
 
-          function convertDate (m, d) {
+          function convertDate (m, d) { //convert date of entry to readable format
             switch (m) {
               case 'January':
                 month = 0;
@@ -103,18 +103,18 @@ firebaseApp.auth().onAuthStateChanged(user => {
             day = Number(d.slice(0, -2));
           }
           convertDate(dateArray[0], dateArray[1]);
-          entry.timeDiff = Date.UTC(year, month, day);
+          entry.timeDiff = Date.UTC(year, month, day); //get time since epoch
         })
-        entries.sort((a, b) => {
+        entries.sort((a, b) => { //sort days from newest to oldest
           return b.timeDiff - a.timeDiff;
         });
         console.log(entries);
-        store.dispatch(loadHistory(entries));
+        store.dispatch(loadHistory(entries)); //send history to app state
       }
     })
 
   }
-  else {
+  else { //no user found? route to welcome page to reuqire login/registration
     console.log('no user found');
     browserHistory.replace('/');
   }
