@@ -13,12 +13,12 @@ class App extends Component {
     return (
       <div>
         <nav className="w3-bar w3-black">
-          <Link to={'/Home'} className="w3-bar-item w3-button">Home</Link>
-          <Link to={'/CurrentDay'} className="w3-bar-item w3-button">Current Day</Link>
-          <Link to={'/History'} className="w3-bar-item w3-button">History</Link>
-          <Link to={'/profile'} className="w3-bar-item w3-button">Update Profile</Link>
+          <Link to={'/Home'} className="w3-bar-item w3-button w3-mobile">Home</Link>
+          <Link to={'/CurrentDay'} className="w3-bar-item w3-button w3-mobile">Current Day</Link>
+          <Link to={'/History'} className="w3-bar-item w3-button w3-mobile">History</Link>
+          <Link to={'/profile'} className="w3-bar-item w3-button w3-mobile">Update Profile</Link>
           <Link to={'/'}
-              className="w3-bar-item w3-button"
+              className="w3-bar-item w3-button w3-mobile"
               onClick={() => this.signOut()}
             >
               Sign Out
