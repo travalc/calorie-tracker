@@ -1,6 +1,7 @@
 $smartphone-max-width: 450px;
 $tablet-max-width: 775px;
 $desktop-min-width: 776px;
+$large-min-width: 1300px;
 
 /* Media Queries */
 @mixin smartphone {
@@ -23,6 +24,12 @@ $desktop-min-width: 776px;
 
 @mixin tabletAndDesktop {
   @media (min-width:#{$smartphone-max-width + 1px}) {
+    @content;
+  }
+}
+
+@mixin largeScreen {
+  @media (min-width: $large-min-width) {
     @content;
   }
 }
@@ -134,5 +141,45 @@ body {
   }
   .nav-item:hover {
     text-decoration: none;
+  }
+}
+
+/* Home */
+
+.Home {
+  margin-top: 2%;
+  text-align: center;
+
+  .home-head {
+
+    h2 {
+      font-size: 50px;
+    }
+    @include largeScreen {
+      margin-right: 15%;
+    }
+  }
+
+  .box-container {
+    display: flex;
+    margin-top: 10%;
+    @include desktop {
+      margin-left: 25%;
+    }
+    @include tablet {
+      margin-left: 10%
+    }
+
+    .box-button {
+      margin: 40px;
+
+      .button-icon {
+        display: block;
+        font-size: 100px;
+      }
+      @include smartphone {
+        width: 600px;
+      }
+    }
   }
 }

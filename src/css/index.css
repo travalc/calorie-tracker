@@ -65,4 +65,31 @@ body {
 .navigation .nav-item:hover {
   text-decoration: none; }
 
+/* Home */
+.Home {
+  margin-top: 2%;
+  text-align: center; }
+  .Home .home-head h2 {
+    font-size: 50px; }
+  @media (min-width: 1300px) {
+    .Home .home-head {
+      margin-right: 15%; } }
+  .Home .box-container {
+    display: flex;
+    margin-top: 10%; }
+    @media (min-width: 776px) {
+      .Home .box-container {
+        margin-left: 25%; } }
+    @media (min-width: 451px) and (max-width: 775px) {
+      .Home .box-container {
+        margin-left: 10%; } }
+    .Home .box-container .box-button {
+      margin: 40px; }
+      .Home .box-container .box-button .button-icon {
+        display: block;
+        font-size: 100px; }
+      @media (max-width: 450px) {
+        .Home .box-container .box-button {
+          width: 600px; } }
+
 /*# sourceMappingURL=index.css.map */
