@@ -20,7 +20,7 @@ class App extends Component {
         >
           Sign Out
         </button>
-        <div><Link to={'/AboutSection'}>About</Link></div>
+        <div><Link to={'/Home'}>Home</Link></div>
         <div><Link to={'/CurrentDay'}>Current Day</Link></div>
         <div><Link to={'/History'}>History</Link></div>
         <div><Link to={'/profile'}>Update Profile</Link></div>

@@ -9,7 +9,7 @@ import Welcome from './components/Welcome';
 import App from './components/App';
 import Profile from './components/Profile';
 import Register from './components/Register';
-import AboutSection from './components/AboutSection';
+import Home from './components/Home';
 import CurrentDay from './components/CurrentDay';
 import History from './components/History';
 import reducer from './reducers';
@@ -54,7 +54,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
           }
         })
 
-        browserHistory.push('/App');
+        browserHistory.push('/Home');
         entries.forEach(entry => {
           const dateArray = entry.date.split(' ');
           let month = null;
@@ -130,7 +130,7 @@ ReactDOM.render(
       <Route path="/" component={Welcome} />
 
       <Route path="/App" component={App}>
-        <Route path="/AboutSection" component={AboutSection} />
+        <Route path="/Home" component={Home} />
         <Route path="/CurrentDay" component={CurrentDay} />
         <Route path="/History" component={History} />
       </Route>
