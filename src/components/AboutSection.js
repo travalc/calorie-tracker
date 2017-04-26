@@ -103,7 +103,7 @@ class AboutSection extends Component {
           <li><strong>Sex:</strong> {this.props.state.profile.sex}</li>
           <li><strong>Height:</strong> {this.props.state.profile.feet}ft. {this.props.state.profile.inches}in.</li>
           <li><strong>Weight:</strong> {this.props.state.profile.weight}lbs</li>
-          <li><strong>Target Caloric Intake:</strong> {this.state.targetCalories} calories per day</li>
+          <li><strong>Target caloric intake to {this.props.state.profile.goal}:</strong> {this.state.targetCalories} calories per day</li>
           <li>
             {
               this.props.state.history.length < 7
