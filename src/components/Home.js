@@ -27,6 +27,14 @@ class Home extends Component {
             <span>View Your Progress/Stats</span>
             <span className="fa fa-line-chart button-icon"></span>
           </div>
+          <div className="box-button">
+            <span>Edit Your Profile</span>
+            <span className="fa fa-pencil button-icon"></span>
+          </div>
+          <div className="box-button">
+            <span>Sign Out</span>
+            <span className="fa fa-power-off button-icon"></span>
+          </div>
         </div>
       </div>
     )

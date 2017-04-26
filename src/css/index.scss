@@ -162,16 +162,12 @@ body {
 
   .box-container {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 10%;
-    @include desktop {
-      margin-left: 25%;
-    }
-    @include tablet {
-      margin-left: 10%
-    }
+    margin-left: 5%;
 
     .box-button {
-      margin: 40px;
+      margin: 50px;
 
       .button-icon {
         display: block;

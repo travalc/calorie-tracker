@@ -76,15 +76,11 @@ body {
       margin-right: 15%; } }
   .Home .box-container {
     display: flex;
-    margin-top: 10%; }
-    @media (min-width: 776px) {
-      .Home .box-container {
-        margin-left: 25%; } }
-    @media (min-width: 451px) and (max-width: 775px) {
-      .Home .box-container {
-        margin-left: 10%; } }
+    flex-wrap: wrap;
+    margin-top: 10%;
+    margin-left: 5%; }
     .Home .box-container .box-button {
-      margin: 40px; }
+      margin: 50px; }
       .Home .box-container .box-button .button-icon {
         display: block;
         font-size: 100px; }
