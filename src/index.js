@@ -13,7 +13,7 @@ import AboutSection from './components/AboutSection';
 import CurrentDay from './components/CurrentDay';
 import History from './components/History';
 import reducer from './reducers';
-import { updateUser, loadProfile, loadHistory } from './actions';
+import { updateUser, loadProfile, loadHistory, submitProfile } from './actions';
 import './css/index.css';
 
 const store = createStore(reducer);
@@ -43,7 +43,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
         let entries = [];
 
         store.dispatch(loadProfile(profileInfo)); // send profile info to app state
-
+        store.dispatch(submitProfile(false));
         snap.forEach(child => { //load previous day history from database
           if (child.key === 'entries') {
             child.forEach(entry => {
