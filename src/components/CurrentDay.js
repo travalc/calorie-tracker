@@ -63,7 +63,7 @@ class CurrentDay extends Component {
     }
   }
 
-  isThisADuplicateDate(date) {
+  isThisADuplicateDate(date) { //checks if day being logged already exists in user history
     const history = this.props.state.history;
     let count = 0;
     var duplicate;
@@ -102,7 +102,7 @@ class CurrentDay extends Component {
                 />
               </div>
             :
-              <div>
+              <div className="log-screen">
                 <h4>What You Have Eaten Today, {this.state.date}</h4>
                 <ManualAdd />
                 <Search />

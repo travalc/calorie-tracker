@@ -194,7 +194,7 @@ body {
       margin-top: 25%;
     }
 
-    margin-top: 20%;
+    margin-top: 10%;
     margin-left: 3%;
     .box-button:hover {
       cursor: pointer;
@@ -259,6 +259,15 @@ body {
     text-align: center;
     margin-top: 20%;
     h4 {
+      font-family: 'Chewy', cursive;
+      letter-spacing: 1px;
+      font-size: 28px;
+    }
+  }
+  .log-screen {
+    margin-top: 2%;
+    h4 {
+      text-align: center;
       font-family: 'Chewy', cursive;
       letter-spacing: 1px;
       font-size: 28px;

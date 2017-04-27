@@ -29,7 +29,6 @@ class Profile extends Component {
         feet: this.props.state.profile.feet,
         inches: this.props.state.profile.inches,
         weight: this.props.state.profile.weight,
-        target: this.props.state.profile.target,
         activityLevel: this.props.state.profile.activityLevel,
         goal: this.props.state.profile.goal
       });
@@ -142,6 +141,7 @@ class Profile extends Component {
               onChange={event => this.setState({goal: event.target.value})}
             >
               <option value={null}>-</option>
+              <option value="maintain weight">maintain weight</option>
               <option value="lose 1 pound">lose 1 pound</option>
               <option value="lose 2 pounds">lose 2 pounds</option>
               <option value="gain 1 pound">gain 1 pound</option>
@@ -149,9 +149,7 @@ class Profile extends Component {
             </select>
             <div className="form-inline">
               <button
-                className="profile-input"
-                className="btn btn-primary"
-                type="button"
+                className="btn btn-primary profile-input"
                 onClick={() => this.updateProfile()}
               >
                 Save

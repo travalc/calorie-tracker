@@ -80,6 +80,9 @@ class History extends Component {
 
     //calculate target calories based on goal
     switch (this.props.state.profile.goal) {
+      case "maintain weight":
+        targetCalories = Math.round(maintenanceCalories);
+        break;
       case "lose 1 pound":
         targetCalories = Math.round(maintenanceCalories - 500);
         break;
