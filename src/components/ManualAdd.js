@@ -40,15 +40,12 @@ class ManualAdd extends Component {
 
   render() {
     return (
-      <div>
-        <p>Click here to add a food</p>
-        <button
-          className="btn btn-primary"
-          type="button"
+      <div className="ManualAdd">
+        <a
           onClick={() => this.handleOpenModal()}
         >
-          Add Food
-        </button>
+          Or click here if you want to enter an item manually
+        </a>
         <ReactModal isOpen={this.state.showModal} contentLabel="Add Food Manually">
           <h4>Please enter food name, calories per serving, and number of servings</h4>
           <div>

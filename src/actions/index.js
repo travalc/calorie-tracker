@@ -1,4 +1,4 @@
-import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE, ADD_FOOD_ITEM, DELETE_FOOD_ITEM, EDIT_FOOD_ITEM, DELETE_CURRENT_DAY, LOAD_HISTORY } from '../constants';
+import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE, ADD_FOOD_ITEM, DELETE_FOOD_ITEM, EDIT_FOOD_ITEM, DELETE_CURRENT_DAY, LOAD_HISTORY, SET_CURRENT_DATE } from '../constants';
 
 export function updateUser(email) {
   const action = {
@@ -60,5 +60,13 @@ export function loadHistory(array) {
     type: LOAD_HISTORY,
     entries: array
   }
-  return action
+  return action;
+}
+
+export function setCurrentDate(date) {
+  const action = {
+    type: SET_CURRENT_DATE,
+    currentDate: date
+  }
+  return action;
 }

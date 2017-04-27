@@ -175,11 +175,34 @@ body {
     letter-spacing: 1px;
     font-size: 28px; }
 .CurrentDay .log-screen {
-  margin-top: 2%; }
+  margin-top: 5%; }
   .CurrentDay .log-screen h4 {
     text-align: center;
     font-family: 'Chewy', cursive;
     letter-spacing: 1px;
     font-size: 28px; }
+
+.ManualAdd {
+  text-align: center; }
+  .ManualAdd a:hover {
+    cursor: pointer; }
+  .ManualAdd a {
+    font-size: 15px;
+    letter-spacing: 0; }
+
+.Search {
+  text-align: center; }
+  .Search .search-form {
+    width: 100%; }
+  .Search .search-input {
+    width: 80%; }
+    @media (max-width: 450px) {
+      .Search .search-input {
+        width: 100%;
+        margin-bottom: 5px; } }
+    @media (min-width: 451px) and (max-width: 775px) {
+      .Search .search-input {
+        width: 100%;
+        margin-bottom: 5px; } }
 
 /*# sourceMappingURL=index.css.map */

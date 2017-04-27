@@ -38,7 +38,7 @@ class App extends Component {
         {
           this.props.state.profile.name !== null // Profile data is present?
             ?
-              this.state.width <= 450 // Screen is smartphone size?
+              this.state.width <= 600 // Screen is smartphone size?
                 ?
                   this.state.menuOpen === false // Menu is closed
                     ?
@@ -88,7 +88,7 @@ class App extends Component {
         }
 
         {
-          this.state.width <= 450 // Toggle bar is visible on small screen
+          this.state.width <= 600 // Toggle bar is visible on small screen
             ?
               <div className="toggle-bar">
                 {

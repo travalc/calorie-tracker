@@ -4,11 +4,13 @@ import newUser from './reducer_profile_submitted';
 import profile from './reducer_profile_data';
 import currentDayFoods from './reducer_current_foods';
 import history from './reducer_history';
+import currentDate from './reducer_currentDate';
 
 export default combineReducers( {
   user,
   newUser,
   profile,
   currentDayFoods,
-  history
+  history,
+  currentDate
 })

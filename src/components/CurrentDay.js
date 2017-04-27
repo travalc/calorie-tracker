@@ -5,7 +5,7 @@ import moment from 'moment';
 import Search from './Search';
 import ManualAdd from './ManualAdd';
 import { connect } from 'react-redux';
-import { deleteFoodItem, editItem, deleteCurrentDay } from '../actions';
+import { deleteFoodItem, editItem, deleteCurrentDay, setCurrentDate } from '../actions';
 
 class CurrentDay extends Component {
   constructor(props) {
@@ -27,6 +27,12 @@ class CurrentDay extends Component {
 
   handleCloseModal() {
     this.setState({showModal: false});
+  }
+
+  componentWillMount() {
+    this.setState({
+      date: this.props.state.currentDate
+    })
   }
 
   editFoodItem(name, calories, quantity, id) {
@@ -76,6 +82,10 @@ class CurrentDay extends Component {
     return duplicate;
   }
 
+  sendDateToAppState(date) {
+    this.props.setCurrentDate(date);
+  }
+
   render() {
     console.log(this.props);
     return (
@@ -92,8 +102,8 @@ class CurrentDay extends Component {
                     if (this.isThisADuplicateDate(enteredDate) === false) {
                       this.setState({
                         date: enteredDate
-
                       });
+                      this.sendDateToAppState(enteredDate);
                     }
                     else {
                       alert('An entry for this date already exists');
@@ -104,8 +114,8 @@ class CurrentDay extends Component {
             :
               <div className="log-screen">
                 <h4>What You Have Eaten Today, {this.state.date}</h4>
-                <ManualAdd />
                 <Search />
+                <ManualAdd />
                 <ul style={{listStyleType: 'none'}}>
                   {
                     this.props.state.currentDayFoods.foodItems.length > 0
@@ -239,4 +249,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { deleteFoodItem, editItem, deleteCurrentDay })(CurrentDay);
+export default connect(mapStateToProps, { deleteFoodItem, editItem, deleteCurrentDay, setCurrentDate })(CurrentDay);

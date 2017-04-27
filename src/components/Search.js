@@ -68,11 +68,11 @@ class Today extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Search">
         <p>Search for a food to add!</p>
-        <div className="form-group form-inline">
+        <div className="form-group form-inline search-form">
           <input
-            className="form-control"
+            className="form-control search-input"
             placeholder="ex. banana"
             onChange={event => this.setState({query: event.target.value})}
           />
@@ -110,6 +110,7 @@ class Today extends Component {
                         >
                           Select
                         </button>
+                        <hr />
                      </li>
                    )
                  })

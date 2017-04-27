@@ -284,12 +284,41 @@ body {
     }
   }
   .log-screen {
-    margin-top: 2%;
+    margin-top: 5%;
     h4 {
       text-align: center;
       font-family: 'Chewy', cursive;
       letter-spacing: 1px;
       font-size: 28px;
+    }
+  }
+}
+
+.ManualAdd {
+  text-align: center;
+  a:hover {
+    cursor: pointer;
+  }
+  a {
+    font-size: 15px;
+    letter-spacing: 0;
+  }
+}
+
+.Search {
+  text-align: center;
+  .search-form {
+    width: 100%;
+  }
+  .search-input {
+    width: 80%;
+    @include smartphone {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+    @include tablet  {
+      width: 100%;
+      margin-bottom: 5px;
     }
   }
 }
