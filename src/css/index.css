@@ -141,7 +141,7 @@ body {
       height: 230px;
       padding-top: 20%;
       margin: 50px;
-      background-color: #edfff4;
+      background-color: white;
       border-radius: 50%;
       border-style: outset; }
       .Home .box-container .box-button .button-title {
@@ -181,6 +181,55 @@ body {
     font-family: 'Chewy', cursive;
     letter-spacing: 1px;
     font-size: 28px; }
+  .CurrentDay .log-screen .current-day-summary {
+    background-color: white;
+    border: solid black;
+    padding: 20px;
+    width: 80%;
+    margin-left: 10%; }
+    @media (max-width: 450px) {
+      .CurrentDay .log-screen .current-day-summary {
+        padding-bottom: 30px; } }
+    .CurrentDay .log-screen .current-day-summary hr {
+      border-color: black; }
+    .CurrentDay .log-screen .current-day-summary .entry-icons {
+      float: right;
+      margin-right: 0;
+      padding-right: 0; }
+      .CurrentDay .log-screen .current-day-summary .entry-icons .entry-edit-icon {
+        color: green; }
+      .CurrentDay .log-screen .current-day-summary .entry-icons .entry-delete-icon {
+        color: red; }
+      .CurrentDay .log-screen .current-day-summary .entry-icons .entry-edit-icon:hover, .CurrentDay .log-screen .current-day-summary .entry-icons .entry-delete-icon:hover {
+        cursor: pointer; }
+      @media (max-width: 450px) {
+        .CurrentDay .log-screen .current-day-summary .entry-icons {
+          float: left;
+          margin-top: 4px; } }
+    .CurrentDay .log-screen .current-day-summary .delete-all {
+      color: red; }
+      .CurrentDay .log-screen .current-day-summary .delete-all .delete-all-icon {
+        color: red; }
+      @media (min-width: 451px) {
+        .CurrentDay .log-screen .current-day-summary .delete-all {
+          float: left; } }
+      @media (max-width: 450px) {
+        .CurrentDay .log-screen .current-day-summary .delete-all {
+          display: block; } }
+    .CurrentDay .log-screen .current-day-summary .delete-all:hover {
+      cursor: pointer; }
+    @media (min-width: 451px) {
+      .CurrentDay .log-screen .current-day-summary .total-for-today {
+        float: right; } }
+    @media (max-width: 450px) {
+      .CurrentDay .log-screen .current-day-summary .total-for-today {
+        display: block;
+        margin-top: 10px; } }
+.CurrentDay .current-day-buttons {
+  text-align: center;
+  margin-top: 15px; }
+  .CurrentDay .current-day-buttons .cancel-button {
+    margin-left: 10px; }
 
 .ManualAdd {
   text-align: center; }

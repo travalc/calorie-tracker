@@ -253,7 +253,7 @@ body {
       }
       padding-top: 20%;
       margin: 50px;
-      background-color: #edfff4;
+      background-color: white;
       border-radius: 50%;
       border-style:outset;
       @include smartphone {
@@ -290,6 +290,68 @@ body {
       font-family: 'Chewy', cursive;
       letter-spacing: 1px;
       font-size: 28px;
+    }
+    .current-day-summary {
+      background-color: white;
+      border: solid black;
+      padding: 20px;
+      @include smartphone {
+        padding-bottom: 30px;
+      }
+      width: 80%;
+      margin-left: 10%;
+      hr {
+        border-color: black;
+      }
+      .entry-icons {
+        float: right;
+        margin-right: 0;
+        padding-right: 0;
+        .entry-edit-icon {
+          color: green;
+        }
+        .entry-delete-icon {
+          color: red;
+        }
+        .entry-edit-icon:hover, .entry-delete-icon:hover {
+          cursor: pointer;
+        }
+        @include smartphone {
+          float: left;
+          margin-top: 4px;
+        }
+      }
+      .delete-all {
+        .delete-all-icon {
+          color: red;
+        }
+        @include tabletAndDesktop {
+          float: left;
+        }
+        @include smartphone {
+          display: block;
+        }
+        color: red;
+      }
+      .delete-all:hover {
+        cursor: pointer;
+      }
+      .total-for-today {
+        @include tabletAndDesktop {
+          float: right;
+        }
+        @include smartphone {
+          display: block;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+  .current-day-buttons {
+    text-align: center;
+    margin-top: 15px;
+    .cancel-button {
+      margin-left: 10px;
     }
   }
 }

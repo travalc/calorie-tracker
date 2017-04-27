@@ -92,7 +92,7 @@ class CurrentDay extends Component {
     return (
       <div className="CurrentDay">
         {
-          this.state.date === ''
+          this.state.date === '' //Only render date field if no date is present
             ?
               <div className="date-screen">
                 <h4>Please Select The Date</h4>
@@ -117,68 +117,96 @@ class CurrentDay extends Component {
                 <h4>What You Have Eaten Today, {this.state.date}</h4>
                 <Search />
                 <ManualAdd />
-                <ul style={{listStyleType: 'none'}}>
-                  {
-                    this.props.state.currentDayFoods.foodItems.length > 0
-                      ?
-                        this.props.state.currentDayFoods.foodItems.map(item => {
-                          return (
-                            <li key={item.id} style={{margin: '15px'}}>
-                              <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
-                              <span style={{display: 'block'}}><strong>Servings:</strong> {item.quantity}</span>
-                              <span style={{display: 'block'}}><strong>Total Calories:</strong> {item.totalCalories}</span>
+                {
+                  this.props.state.currentDayFoods.foodItems.length > 0 //Only render summary if entries are present
+                    ?
+                      <div>
+                        <div className="current-day-summary">
+                          <ul style={{listStyleType: 'none'}}>
+                            {
+                              this.props.state.currentDayFoods.foodItems.length > 0
+                                ?
+                                  this.props.state.currentDayFoods.foodItems.map(item => {
+                                    return (
+                                      <li key={item.id} style={{margin: '15px'}}>
+                                        <div className="row">
+                                          <div className="current-day-entry-data col-md-9 col-xs-12">
+                                            <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
+                                            <span style={{display: 'block'}}><strong>Servings:</strong> {item.quantity}</span>
+                                            <span style={{display: 'block'}}><strong>Total Calories:</strong> {item.totalCalories}</span>
+                                          </div>
+                                          <div className="entry-icons col-md-3 col-xs-12">
+                                            <span
+                                              className="glyphicon glyphicon-pencil entry-edit-icon"
+                                              onClick={() => {
+                                                this.handleOpenModal();
+                                                this.setState({
+                                                  editItem: item,
+                                                  name: item.name,
+                                                  calories: item.calories,
+                                                  totalCalories: item.totalCalories,
+                                                  quantity: item.quantity
+                                                });
+                                              }}
+                                            >
+                                            </span>
+                                            <span
+                                              className="glyphicon glyphicon-remove entry-delete-icon"
+                                              onClick={() => this.props.deleteFoodItem(item)}
+                                              style={{marginLeft: '5px'}}
+                                            >
+                                            </span>
+                                          </div>
+                                        </div>
+                                        <hr />
+                                      </li>
+                                    )
+                                  })
+                                :
+                                  <li></li>
+                            }
+                          </ul>
+                          <div className="current-day-summary-footer">
+                            <p className="total-for-today"><strong>Total Calories For Today:</strong> {this.props.state.currentDayFoods.totalCalories}</p>
+                            <span
+                              className="delete-all"
+                              onClick={() => {
+                                const confirmDeleteAll = confirm("Are you sure you want to delete everything?");
+                                if (confirmDeleteAll === true) {
+                                  this.props.deleteCurrentDay();
+                                }
+                              }}
+                            >
+                              <span className="fa fa-times delete-all-icon"></span> Delete All
+                            </span>
+                          </div>
+                        </div>
+                        <div className="current-day-buttons">
+                          <button
+                            className="btn btn-success"
+                            type="button"
+                            onClick={() => this.addDay()}
+                          >
+                            Submit
+                          </button>
+                          <button
+                            className="btn btn-danger cancel-button"
+                            type="button"
+                            onClick={() => {
+                              this.props.deleteCurrentDay();
+                              this.props.clearCurrentDate();
+                              this.setState({date: ''});
+                            }}
+                          >
+                            Cancel
+                          </button>
+                        </div>
 
-                              <span
-                                className="glyphicon glyphicon-pencil"
-                                onClick={() => {
-                                  this.handleOpenModal();
-                                  this.setState({
-                                    editItem: item,
-                                    name: item.name,
-                                    calories: item.calories,
-                                    totalCalories: item.totalCalories,
-                                    quantity: item.quantity
-                                  });
-                                }}
-                              >
-                              </span>
-                              <span
-                                className="glyphicon glyphicon-remove"
-                                onClick={() => this.props.deleteFoodItem(item)}
-                                style={{marginLeft: '5px'}}
-                              >
-                              </span>
-                            </li>
-                          )
-                        })
-                      :
-                        <li>Nothing Yet</li>
+
+                      </div>
+                    :
+                      <div></div>
                   }
-                </ul>
-                <p><strong>Total Calories For Today:</strong> {this.props.state.currentDayFoods.totalCalories}</p>
-                <button
-                  className="btn btn-success"
-                  type="button"
-                  onClick={() => this.addDay()}
-                >
-                  Submit
-                </button>
-                <button
-                  className="btn btn-danger"
-                  type="button"
-                  onClick={() => this.props.deleteCurrentDay()}
-                >
-                  Delete All
-                </button>
-                <a
-                  onClick={() => {
-                    this.props.deleteCurrentDay();
-                    this.props.clearCurrentDate();
-                    this.setState({date: ''});
-                  }}
-                >
-                  Cancel
-                </a>
 
               {
                 //Editing Modal
