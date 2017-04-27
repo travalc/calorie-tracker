@@ -158,6 +158,25 @@ body {
   }
 }
 
+.closed-menu {
+  height: 0px;
+}
+
+.open-menu {
+  height: 200px;
+}
+
+.toggle-bar {
+  .toggle-icon {
+    color: yellow;
+    float: right;
+    margin-right: 10px;
+  }
+  background-color: black;
+  position: fixed;
+  width: 100%;
+}
+
 /* Home */
 
 .Home {

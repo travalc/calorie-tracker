@@ -75,6 +75,21 @@ body {
 .navigation .nav-item:hover {
   text-decoration: none; }
 
+.closed-menu {
+  height: 0px; }
+
+.open-menu {
+  height: 200px; }
+
+.toggle-bar {
+  background-color: black;
+  position: fixed;
+  width: 100%; }
+  .toggle-bar .toggle-icon {
+    color: yellow;
+    float: right;
+    margin-right: 10px; }
+
 /* Home */
 .Home {
   margin-top: 0;
