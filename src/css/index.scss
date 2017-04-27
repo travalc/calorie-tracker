@@ -160,17 +160,23 @@ body {
 
 .closed-menu {
   height: 0px;
+  transition: height 0.5s;
 }
 
 .open-menu {
   height: 200px;
+  transition: height 0.5s;
 }
 
 .toggle-bar {
   .toggle-icon {
-    color: yellow;
+    color: white;
     float: right;
     margin-right: 10px;
+  }
+  .toggle-icon:hover {
+    cursor: pointer;
+    color: yellow;
   }
   background-color: black;
   position: fixed;

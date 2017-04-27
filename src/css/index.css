@@ -76,19 +76,24 @@ body {
   text-decoration: none; }
 
 .closed-menu {
-  height: 0px; }
+  height: 0px;
+  transition: height 0.5s; }
 
 .open-menu {
-  height: 200px; }
+  height: 200px;
+  transition: height 0.5s; }
 
 .toggle-bar {
   background-color: black;
   position: fixed;
   width: 100%; }
   .toggle-bar .toggle-icon {
-    color: yellow;
+    color: white;
     float: right;
     margin-right: 10px; }
+  .toggle-bar .toggle-icon:hover {
+    cursor: pointer;
+    color: yellow; }
 
 /* Home */
 .Home {
