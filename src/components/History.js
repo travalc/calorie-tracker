@@ -110,20 +110,22 @@ class History extends Component {
       <div className="History">
         <h4>Your History and Stats At A Glance</h4>
           <div className="statistics">
-            <div className="row">
-              <div className="target-calories col-sm-12 col-xs-12">
+            <div>
+              <div className="target-calories">
                 <h5>Target</h5>
+                <span className="fa fa-bullseye target-icon"></span>
                 <span>{this.getTargetCalories()}</span>
               </div>
-              <div className="average-calories col-sm-12 col-xs-12">
+              <div className="average-calories">
                 <h5>Average</h5>
+                <span className="fa fa-calculator average-icon"></span>
                 <span>{this.getAverageCaloriesPerDay()}</span>
               </div>
             </div>
           </div>
 
 
-          <div className="history">
+          <div className="past-entries">
             <ul style={{listStyleType: 'none'}}>
               {
                 entries.length > 0

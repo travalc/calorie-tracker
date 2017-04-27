@@ -402,21 +402,36 @@ body {
     letter-spacing: 1px;
     font-size: 28px;
     text-align: center;
+    @include smartphone {
+      font-size: 18px;
+    }
   }
   .statistics {
+    display: block;
+    height: 500px;
     .target-calories, .average-calories {
+      h5 {
+        font-family: 'Chewy', cursive;
+        font-size: 20px;
+        letter-spacing: 3px;
+      }
+      span {
+        font-size: 20px;
+        display: block;
+        margin-top: 5px;
+      }
       text-align: center;
       height: 200px;
       width: 200px;
-      padding-top: 6%;
+      padding-top: 4%;
       border-radius: 50%;
       border: solid black;
       background-color: white;
       margin-top: 4%;
       display: block;
       @include smartphone {
-        height: 160px;
-        width: 160px;
+        height: 140px;
+        width: 140px;
       }
       @include tablet {
         height: 180px;
@@ -450,6 +465,10 @@ body {
     }
 
 
+
+  }
+
+  .past-entries {
 
   }
 }
