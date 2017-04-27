@@ -185,7 +185,12 @@ class CurrentDay extends Component {
                           <button
                             className="btn btn-success"
                             type="button"
-                            onClick={() => this.addDay()}
+                            onClick={() => {
+                              const confirmSubmission = confirm('Are you sure you are done with this day? Please check that you have nothing left to add.');
+                              if (confirmSubmission === true) {
+                                this.addDay();
+                              }
+                            }}
                           >
                             Submit
                           </button>
@@ -193,9 +198,12 @@ class CurrentDay extends Component {
                             className="btn btn-danger cancel-button"
                             type="button"
                             onClick={() => {
-                              this.props.deleteCurrentDay();
-                              this.props.clearCurrentDate();
-                              this.setState({date: ''});
+                              const confirmCancelDay = confirm('Are you sure? All data on this page will be cleared.');
+                              if (confirmCancelDay === true) {
+                                this.props.deleteCurrentDay();
+                                this.props.clearCurrentDate();
+                                this.setState({date: ''});
+                              }
                             }}
                           >
                             Cancel
