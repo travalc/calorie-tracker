@@ -1,4 +1,4 @@
-import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE, ADD_FOOD_ITEM, DELETE_FOOD_ITEM, EDIT_FOOD_ITEM, DELETE_CURRENT_DAY, LOAD_HISTORY, SET_CURRENT_DATE } from '../constants';
+import { UPDATE_USER, PROFILE_SUBMITTED, LOAD_PROFILE, ADD_FOOD_ITEM, DELETE_FOOD_ITEM, EDIT_FOOD_ITEM, DELETE_CURRENT_DAY, LOAD_HISTORY, SET_CURRENT_DATE, CLEAR_CURRENT_DATE } from '../constants';
 
 export function updateUser(email) {
   const action = {
@@ -67,6 +67,13 @@ export function setCurrentDate(date) {
   const action = {
     type: SET_CURRENT_DATE,
     currentDate: date
+  }
+  return action;
+}
+
+export function clearCurrentDate() {
+  const action = {
+    type: CLEAR_CURRENT_DATE,
   }
   return action;
 }

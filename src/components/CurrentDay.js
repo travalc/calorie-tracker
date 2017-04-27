@@ -5,7 +5,7 @@ import moment from 'moment';
 import Search from './Search';
 import ManualAdd from './ManualAdd';
 import { connect } from 'react-redux';
-import { deleteFoodItem, editItem, deleteCurrentDay, setCurrentDate } from '../actions';
+import { deleteFoodItem, editItem, deleteCurrentDay, setCurrentDate, clearCurrentDate } from '../actions';
 
 class CurrentDay extends Component {
   constructor(props) {
@@ -63,6 +63,7 @@ class CurrentDay extends Component {
       firebaseDatabase.ref('users/' + userId + '/entries').push(day);
       this.setState({date: ''});
       this.props.deleteCurrentDay();
+      this.props.clearCurrentDate();
     }
     else {
       alert('Entry needs a date and food entries');
@@ -249,4 +250,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { deleteFoodItem, editItem, deleteCurrentDay, setCurrentDate })(CurrentDay);
+export default connect(mapStateToProps, { deleteFoodItem, editItem, deleteCurrentDay, setCurrentDate, clearCurrentDate })(CurrentDay);
