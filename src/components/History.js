@@ -107,69 +107,95 @@ class History extends Component {
     const entries = this.props.state.history;
     console.log(this.state.currentItem);
     return (
-      <div>
-        <div>Stats for {this.props.state.profile.name}</div>
-        <div>Target Calories Per day to {this.props.state.profile.goal} per week: {this.getTargetCalories()}</div>
-        <div>Average Calories Per day (based on the last week): {this.getAverageCaloriesPerDay()}</div>
-        <ul style={{listStyleType: 'none'}}>
-          {
-            entries.length > 0
-              ?
-                entries.map(entry => {
-                  return (
-                    <li key={entry.key}>
-                      <a
-                        onClick={() => {
-                          this.handleOpenModal();
-                          this.setState({currentItem: entry});
-                        }}
-                      >
-                        {entry.date}
-                      </a>
-                    </li>
-                  )
-                })
-              :
-                <div></div>
-          }
-          <ReactModal
-            isOpen={this.state.showModal}
-            contentLabel="Detailed Day View"
-          >
-            {
-              this.state.currentItem !== null
-                ?
-                  <div>
-                    <h5>Summary for {this.state.currentItem.date}</h5>
-                    <p><strong>Total Calories: </strong>{this.state.currentItem.totalCalories}</p>
-                    <p><strong>Foods:</strong></p>
-                    <ul style={{listStyleType: 'none'}}>
-                      {
-                        this.state.currentItem.foods.map(food => {
-                          return (
-                            <li key={food.id} style={{margin: '15px'}}>
-                              <span style={{display: 'block'}}><strong>Name: </strong>{food.name}</span>
-                              <span style={{display: 'block'}}><strong>Calories Per Serving: </strong>{food.calories}</span>
-                              <span style={{display: 'block'}}><strong>Number of Servings: </strong>{food.quantity}</span>
-                              <span style={{display: 'block'}}><strong>Total Calories: </strong>{food.totalCalories}</span>
-                            </li>
-                          )
-                        })
-                      }
-                    </ul>
-                  </div>
-                :
-                  <div></div>
-            }
-            <button
-              className="btn btn-danger"
-              type="button"
-              onClick={() => this.handleCloseModal()}
-            >
-              Close
-            </button>
-          </ReactModal>
-        </ul>
+      <div className="History">
+        <h4>Your History and Stats At A Glance</h4>
+          <div className="statistics">
+            <div className="row">
+              <div className="target-calories col-sm-12 col-xs-12">
+                <h5>Target</h5>
+                <span>{this.getTargetCalories()}</span>
+              </div>
+              <div className="average-calories col-sm-12 col-xs-12">
+                <h5>Average</h5>
+                <span>{this.getAverageCaloriesPerDay()}</span>
+              </div>
+            </div>
+          </div>
+
+
+          <div className="history">
+            <ul style={{listStyleType: 'none'}}>
+              {
+                entries.length > 0
+                  ?
+                    entries.map(entry => {
+                      return (
+                        <li key={entry.key}>
+                          <a
+                            onClick={() => {
+                              this.handleOpenModal();
+                              this.setState({currentItem: entry});
+                            }}
+                          >
+                            {entry.date}
+                          </a>
+                        </li>
+                      )
+                    })
+                  :
+                    <div></div>
+              }
+              <ReactModal
+                isOpen={this.state.showModal}
+                contentLabel="Detailed Day View"
+              >
+                {
+                  this.state.currentItem !== null
+                    ?
+                      <div>
+                        <h5>Summary for {this.state.currentItem.date}</h5>
+                        <p><strong>Total Calories: </strong>{this.state.currentItem.totalCalories}</p>
+                        <p><strong>Foods:</strong></p>
+                        <ul style={{listStyleType: 'none'}}>
+                          {
+                            this.state.currentItem.foods.map(food => {
+                              return (
+                                <li key={food.id} style={{margin: '15px'}}>
+                                  <span style={{display: 'block'}}><strong>Name: </strong>{food.name}</span>
+                                  <span style={{display: 'block'}}><strong>Calories Per Serving: </strong>{food.calories}</span>
+                                  <span style={{display: 'block'}}><strong>Number of Servings: </strong>{food.quantity}</span>
+                                  <span style={{display: 'block'}}><strong>Total Calories: </strong>{food.totalCalories}</span>
+                                </li>
+                              )
+                            })
+                          }
+                        </ul>
+                      </div>
+                    :
+                      <div></div>
+                }
+                <button
+                  className="btn btn-danger"
+                  type="button"
+                  onClick={() => this.handleCloseModal()}
+                >
+                  Close
+                </button>
+              </ReactModal>
+            </ul>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
     )
   }

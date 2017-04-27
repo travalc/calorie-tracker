@@ -161,11 +161,13 @@ body {
 .closed-menu {
   height: 0px;
   transition: height 0.5s;
+  -webkit-transition: height 0.5s;
 }
 
 .open-menu {
   height: 200px;
   transition: height 0.5s;
+  -webkit-transition: height 0.5s;
 }
 
 .toggle-bar {
@@ -388,5 +390,66 @@ body {
       width: 100%;
       margin-bottom: 5px;
     }
+  }
+}
+
+/* History */
+
+.History {
+  margin-top: 5%;
+  h4 {
+    font-family: 'Chewy', cursive;
+    letter-spacing: 1px;
+    font-size: 28px;
+    text-align: center;
+  }
+  .statistics {
+    .target-calories, .average-calories {
+      text-align: center;
+      height: 200px;
+      width: 200px;
+      padding-top: 6%;
+      border-radius: 50%;
+      border: solid black;
+      background-color: white;
+      margin-top: 4%;
+      display: block;
+      @include smartphone {
+        height: 160px;
+        width: 160px;
+      }
+      @include tablet {
+        height: 180px;
+        width: 180px;
+      }
+    }
+
+    .target-calories {
+      float: left;
+      @include desktop {
+        margin-left: 20%;
+      }
+      @include smartphone {
+        margin-left: 10%;
+      }
+      @include tablet {
+        margin-left: 15%;
+      }
+    }
+    .average-calories {
+      float: right;
+      @include desktop {
+        margin-right: 20%;
+      }
+      @include smartphone {
+        margin-right: 10%;
+      }
+      @include tablet {
+        margin-right: 12%;
+      }
+    }
+
+
+
   }
 }

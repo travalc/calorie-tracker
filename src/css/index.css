@@ -77,11 +77,13 @@ body {
 
 .closed-menu {
   height: 0px;
-  transition: height 0.5s; }
+  transition: height 0.5s;
+  -webkit-transition: height 0.5s; }
 
 .open-menu {
   height: 200px;
-  transition: height 0.5s; }
+  transition: height 0.5s;
+  -webkit-transition: height 0.5s; }
 
 .toggle-bar {
   background-color: black;
@@ -258,5 +260,54 @@ body {
       .Search .search-input {
         width: 100%;
         margin-bottom: 5px; } }
+
+/* History */
+.History {
+  margin-top: 5%; }
+  .History h4 {
+    font-family: 'Chewy', cursive;
+    letter-spacing: 1px;
+    font-size: 28px;
+    text-align: center; }
+  .History .statistics .target-calories, .History .statistics .average-calories {
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    padding-top: 6%;
+    border-radius: 50%;
+    border: solid black;
+    background-color: white;
+    margin-top: 4%;
+    display: block; }
+    @media (max-width: 450px) {
+      .History .statistics .target-calories, .History .statistics .average-calories {
+        height: 160px;
+        width: 160px; } }
+    @media (min-width: 451px) and (max-width: 775px) {
+      .History .statistics .target-calories, .History .statistics .average-calories {
+        height: 180px;
+        width: 180px; } }
+  .History .statistics .target-calories {
+    float: left; }
+    @media (min-width: 776px) {
+      .History .statistics .target-calories {
+        margin-left: 20%; } }
+    @media (max-width: 450px) {
+      .History .statistics .target-calories {
+        margin-left: 10%; } }
+    @media (min-width: 451px) and (max-width: 775px) {
+      .History .statistics .target-calories {
+        margin-left: 15%; } }
+  .History .statistics .average-calories {
+    float: right; }
+    @media (min-width: 776px) {
+      .History .statistics .average-calories {
+        margin-right: 20%; } }
+    @media (max-width: 450px) {
+      .History .statistics .average-calories {
+        margin-right: 10%; } }
+    @media (min-width: 451px) and (max-width: 775px) {
+      .History .statistics .average-calories {
+        margin-right: 12%; } }
 
 /*# sourceMappingURL=index.css.map */
