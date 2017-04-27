@@ -229,7 +229,7 @@ body {
       border-color: white;
       background-color: black;
       .button-title, .button-icon {
-        color: white;
+        color: yellow;
       }
     }
     .box-link:hover {
@@ -414,7 +414,7 @@ body {
   }
   .statistics {
     display: block;
-    height: 500px;
+    height: 400px;
     .target-calories, .average-calories {
       h5 {
         font-family: 'Chewy', cursive;
@@ -473,8 +473,34 @@ body {
 
 
   }
-
+  .past-entries-wrapper {
+    background-color: white;
+    width: 80%;
+    margin-left: 10%;
+    padding-right: 0;
+    border: solid black;
+  }
   .past-entries {
-
+    li {
+      margin: 10px;
+    }
+    a {
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: blue;
+    }
+    a:hover {
+      cursor: pointer;
+    }
+    hr {
+      border-color: black;
+    }
+    text-align: left;
+    @include tablet {
+      margin-left: 10%;
+    }
+    @include smartphone {
+      margin-left: 0;
+    }
   }
 }

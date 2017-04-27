@@ -132,7 +132,7 @@ body {
       border-color: white;
       background-color: black; }
       .Home .box-container .box-button:hover .button-title, .Home .box-container .box-button:hover .button-icon {
-        color: white; }
+        color: yellow; }
     .Home .box-container .box-link:hover {
       text-decoration: none;
       color: white; }
@@ -279,7 +279,7 @@ body {
         font-size: 18px; } }
   .History .statistics {
     display: block;
-    height: 500px; }
+    height: 400px; }
     .History .statistics .target-calories, .History .statistics .average-calories {
       text-align: center;
       height: 200px;
@@ -328,5 +328,29 @@ body {
       @media (min-width: 451px) and (max-width: 775px) {
         .History .statistics .average-calories {
           margin-right: 12%; } }
+  .History .past-entries-wrapper {
+    background-color: white;
+    width: 80%;
+    margin-left: 10%;
+    padding-right: 0;
+    border: solid black; }
+  .History .past-entries {
+    text-align: left; }
+    .History .past-entries li {
+      margin: 10px; }
+    .History .past-entries a {
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: blue; }
+    .History .past-entries a:hover {
+      cursor: pointer; }
+    .History .past-entries hr {
+      border-color: black; }
+    @media (min-width: 451px) and (max-width: 775px) {
+      .History .past-entries {
+        margin-left: 10%; } }
+    @media (max-width: 450px) {
+      .History .past-entries {
+        margin-left: 0; } }
 
 /*# sourceMappingURL=index.css.map */

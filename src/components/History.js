@@ -108,7 +108,7 @@ class History extends Component {
     console.log(this.state.currentItem);
     return (
       <div className="History">
-        <h4>Your History and Stats At A Glance</h4>
+        <h4>Your Progress</h4>
           <div className="statistics">
             <div>
               <div className="target-calories">
@@ -124,80 +124,84 @@ class History extends Component {
             </div>
           </div>
 
+          <h4>Your History</h4>
+          {
+            entries.length > 0 //only render div if entries are present
+              ?
+              <div className="past-entries-wrapper">
+                <div className="past-entries">
+                  <ul style={{listStyleType: 'none'}}>
+                    {
+                      entries.length > 0 //if entries are present, render them
+                        ?
+                          entries.map(entry => {
+                            return (
+                              <li key={entry.key}>
+                                <a
+                                  onClick={() => {
+                                    this.handleOpenModal();
+                                    this.setState({currentItem: entry});
+                                  }}
+                                >
+                                  Date: {entry.date} - Total Calories: {Math.round(entry.totalCalories)}
+                                </a>
+                                {
+                                  entries.indexOf(entry) !== entries.length - 1 //only render hr if there are no more listings
+                                    ?
+                                      <hr />
+                                    :
+                                      <div></div>
+                                }
+                              </li>
+                            )
+                          })
+                        :
+                          <div></div>
+                    }
+                    <ReactModal
+                      isOpen={this.state.showModal}
+                      contentLabel="Detailed Day View"
+                    >
+                      {
+                        this.state.currentItem !== null //Current item is in state? Render it in modal
+                          ?
+                            <div>
+                              <h5>Summary for {this.state.currentItem.date}</h5>
+                              <p><strong>Total Calories: </strong>{this.state.currentItem.totalCalories}</p>
+                              <p><strong>Foods:</strong></p>
+                              <ul style={{listStyleType: 'none'}}>
+                                {
+                                  this.state.currentItem.foods.map(food => {
+                                    return (
+                                      <li key={food.id} style={{margin: '15px'}}>
+                                        <span style={{display: 'block'}}><strong>Name: </strong>{food.name}</span>
+                                        <span style={{display: 'block'}}><strong>Calories Per Serving: </strong>{food.calories}</span>
+                                        <span style={{display: 'block'}}><strong>Number of Servings: </strong>{food.quantity}</span>
+                                        <span style={{display: 'block'}}><strong>Total Calories: </strong>{food.totalCalories}</span>
+                                      </li>
+                                    )
+                                  })
+                                }
+                              </ul>
+                            </div>
+                          :
+                            <div></div>
+                      }
+                      <button
+                        className="btn btn-danger"
+                        type="button"
+                        onClick={() => this.handleCloseModal()}
+                      >
+                        Close
+                      </button>
+                    </ReactModal>
+                  </ul>
 
-          <div className="past-entries">
-            <ul style={{listStyleType: 'none'}}>
-              {
-                entries.length > 0
-                  ?
-                    entries.map(entry => {
-                      return (
-                        <li key={entry.key}>
-                          <a
-                            onClick={() => {
-                              this.handleOpenModal();
-                              this.setState({currentItem: entry});
-                            }}
-                          >
-                            {entry.date}
-                          </a>
-                        </li>
-                      )
-                    })
-                  :
-                    <div></div>
-              }
-              <ReactModal
-                isOpen={this.state.showModal}
-                contentLabel="Detailed Day View"
-              >
-                {
-                  this.state.currentItem !== null
-                    ?
-                      <div>
-                        <h5>Summary for {this.state.currentItem.date}</h5>
-                        <p><strong>Total Calories: </strong>{this.state.currentItem.totalCalories}</p>
-                        <p><strong>Foods:</strong></p>
-                        <ul style={{listStyleType: 'none'}}>
-                          {
-                            this.state.currentItem.foods.map(food => {
-                              return (
-                                <li key={food.id} style={{margin: '15px'}}>
-                                  <span style={{display: 'block'}}><strong>Name: </strong>{food.name}</span>
-                                  <span style={{display: 'block'}}><strong>Calories Per Serving: </strong>{food.calories}</span>
-                                  <span style={{display: 'block'}}><strong>Number of Servings: </strong>{food.quantity}</span>
-                                  <span style={{display: 'block'}}><strong>Total Calories: </strong>{food.totalCalories}</span>
-                                </li>
-                              )
-                            })
-                          }
-                        </ul>
-                      </div>
-                    :
-                      <div></div>
-                }
-                <button
-                  className="btn btn-danger"
-                  type="button"
-                  onClick={() => this.handleCloseModal()}
-                >
-                  Close
-                </button>
-              </ReactModal>
-            </ul>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
+                </div>
+              </div>
+            :
+              <div></div>
+          }
       </div>
     )
   }
