@@ -167,7 +167,7 @@ class CurrentDay extends Component {
                             }
                           </ul>
                           <div className="current-day-summary-footer">
-                            <p className="total-for-today"><strong>Total Calories For Today:</strong> {this.props.state.currentDayFoods.totalCalories}</p>
+                            <p className="total-for-today"><strong>Total Calories For Today:</strong> {Math.round(this.props.state.currentDayFoods.totalCalories)}</p>
                             <span
                               className="delete-all"
                               onClick={() => {
@@ -181,40 +181,41 @@ class CurrentDay extends Component {
                             </span>
                           </div>
                         </div>
-                        <div className="current-day-buttons">
-                          <button
-                            className="btn btn-success"
-                            type="button"
-                            onClick={() => {
-                              const confirmSubmission = confirm('Are you sure you are done with this day? Please check that you have nothing left to add.');
-                              if (confirmSubmission === true) {
-                                this.addDay();
-                              }
-                            }}
-                          >
-                            Submit
-                          </button>
-                          <button
-                            className="btn btn-danger cancel-button"
-                            type="button"
-                            onClick={() => {
-                              const confirmCancelDay = confirm('Are you sure? All data on this page will be cleared.');
-                              if (confirmCancelDay === true) {
-                                this.props.deleteCurrentDay();
-                                this.props.clearCurrentDate();
-                                this.setState({date: ''});
-                              }
-                            }}
-                          >
-                            Cancel
-                          </button>
-                        </div>
+
 
 
                       </div>
                     :
                       <div></div>
                   }
+                  <div className="current-day-buttons">
+                    <button
+                      className="btn btn-success"
+                      type="button"
+                      onClick={() => {
+                        const confirmSubmission = confirm('Are you sure you are done with this day? Please check that you have nothing left to add.');
+                        if (confirmSubmission === true) {
+                          this.addDay();
+                        }
+                      }}
+                    >
+                      Submit
+                    </button>
+                    <button
+                      className="btn btn-danger cancel-button"
+                      type="button"
+                      onClick={() => {
+                        const confirmCancelDay = confirm('Are you sure? All data on this page will be cleared.');
+                        if (confirmCancelDay === true) {
+                          this.props.deleteCurrentDay();
+                          this.props.clearCurrentDate();
+                          this.setState({date: ''});
+                        }
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
 
               {
                 //Editing Modal

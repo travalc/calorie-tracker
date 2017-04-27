@@ -279,7 +279,9 @@ body {
         font-size: 18px; } }
   .History .statistics {
     display: block;
-    height: 400px; }
+    height: 400px;
+    padding-left: 3%;
+    padding-right: 3%; }
     .History .statistics .target-calories, .History .statistics .average-calories {
       text-align: center;
       height: 200px;

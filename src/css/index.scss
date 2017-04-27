@@ -415,6 +415,8 @@ body {
   .statistics {
     display: block;
     height: 400px;
+    padding-left: 3%;
+    padding-right: 3%;
     .target-calories, .average-calories {
       h5 {
         font-family: 'Chewy', cursive;
