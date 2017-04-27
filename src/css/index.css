@@ -87,7 +87,7 @@ body {
 
 .toggle-bar {
   background-color: black;
-  position: fixed;
+  position: absolute;
   width: 100%; }
   .toggle-bar .toggle-icon {
     color: white;
