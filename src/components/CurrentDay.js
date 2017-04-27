@@ -66,7 +66,7 @@ class CurrentDay extends Component {
   render() {
     console.log(this.props);
     return (
-      <div style={{padding: '20px'}}>
+      <div>
         <input
           type="date"
           onChange={event => {

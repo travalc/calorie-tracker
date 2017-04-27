@@ -175,6 +175,7 @@ body {
     h2 {
       font-size: 50px;
       font-family: 'Chewy', cursive;
+      color: yellow;
       @include smartphone {
         font-size: 30px;
       }

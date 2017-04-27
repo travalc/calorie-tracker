@@ -88,7 +88,8 @@ body {
     background-color: #1c1717; }
     .Home .home-head h2 {
       font-size: 50px;
-      font-family: 'Chewy', cursive; }
+      font-family: 'Chewy', cursive;
+      color: yellow; }
       @media (max-width: 450px) {
         .Home .home-head h2 {
           font-size: 30px; } }

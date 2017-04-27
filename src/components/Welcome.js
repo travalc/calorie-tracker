@@ -51,7 +51,14 @@ class Welcome extends Component {
             </button>
           </div>
           <div>{this.state.error.message}</div>
-          <div><Link to={'/register'}>If you are not already a user, please register</Link></div>
+          <div><Link to={'/register'}>If you are not already a user, please click here to register</Link></div>
+          <br />
+          <a
+            href="https://www.nutritionix.com/business/api"
+            target="#"
+          >
+            Powered by Nutritionix API
+          </a>
         </div>
       </div>
     )
