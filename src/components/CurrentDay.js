@@ -170,6 +170,15 @@ class CurrentDay extends Component {
                 >
                   Delete All
                 </button>
+                <a
+                  onClick={() => {
+                    this.props.deleteCurrentDay();
+                    this.props.clearCurrentDate();
+                    this.setState({date: ''});
+                  }}
+                >
+                  Cancel
+                </a>
 
               {
                 //Editing Modal
