@@ -102,6 +102,44 @@ class History extends Component {
     return targetCalories;
   }
 
+  determineGoalProgress() {
+    const average = this.getAverageCaloriesPerDay();
+    const target = this.getTargetCalories();
+    const goal = this.props.state.profile.goal;
+    let onTrack = null;
+
+    switch (goal) {
+      case "lose 1 pound":
+      case "lose 2 pounds":
+        if (average <= target) {
+          onTrack = true;
+        }
+        else {
+          onTrack = false;
+        }
+        break;
+      case "maintain weight":
+        if (average === target) {
+          onTrack = true;
+        }
+        else {
+          onTrack = false;
+        }
+        break;
+      case "gain 1 pound":
+      case "gain 2 pounds":
+        if (average >= target) {
+          onTrack = true;
+        }
+        else {
+          onTrack = false;
+        }
+        break;
+      default:
+        onTrack = null
+    }
+    return onTrack;
+  }
 
   render() {
     const entries = this.props.state.history;
@@ -110,19 +148,42 @@ class History extends Component {
       <div className="History">
         <h4>Your Progress</h4>
           <div className="statistics">
-            <div>
+
               <div className="target-calories">
                 <h5>Target</h5>
                 <span className="fa fa-bullseye target-icon"></span>
-                <span>{this.getTargetCalories()} Calories Per Day</span>
+                <span className="target-text">{this.getTargetCalories()} Calories Per Day</span>
               </div>
               <div className="average-calories">
                 <h5>Average</h5>
                 <span className="fa fa-calculator average-icon"></span>
-                <span>{this.getAverageCaloriesPerDay()} Calories Per Day</span>
+                <span className="average-text">{this.getAverageCaloriesPerDay()} Calories Per Day</span>
               </div>
-            </div>
+
+
           </div>
+          <p className="goal-statement">Your weight management goal is to {this.props.state.profile.goal} per week and...</p>
+          {
+            entries.length > 0
+              ?
+                <div className="determination">
+                  {
+                    this.determineGoalProgress() === true
+                      ?
+                        <div className="on-track determination-result">
+                          <p className="on-track-text">You are on track!</p>
+                          <span className="fa fa-check on-track-icon"></span>
+                        </div>
+                      :
+                        <div className="not-on-track determination-result">
+                          <p className="not-on-track-text">You are not on track.</p>
+                          <span className="fa fa-frown-o not-on-track-icon"></span>
+                        </div>
+                  }
+                </div>
+              :
+                <div></div>
+          }
 
           <h4>Your History</h4>
           {

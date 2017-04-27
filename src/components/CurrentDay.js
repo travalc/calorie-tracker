@@ -181,9 +181,6 @@ class CurrentDay extends Component {
                             </span>
                           </div>
                         </div>
-
-
-
                       </div>
                     :
                       <div></div>

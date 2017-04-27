@@ -277,11 +277,57 @@ body {
     @media (max-width: 450px) {
       .History h4 {
         font-size: 18px; } }
+  .History .goal-statement {
+    text-align: center;
+    font-family: 'Chewy', cursive;
+    font-size: 18px;
+    letter-spacing: 1px; }
+  .History .determination {
+    text-align: center;
+    margin-left: 25%;
+    margin-top: 5%; }
+  .History .determination-result {
+    height: 250px;
+    width: 250px;
+    border: solid black;
+    border-radius: 50%;
+    margin-left: 18%;
+    padding-top: 10%;
+    margin-bottom: 15%; }
+    @media (min-width: 451px) and (max-width: 775px) {
+      .History .determination-result {
+        padding-top: 15%; } }
+    .History .determination-result p {
+      font-size: 20px;
+      letter-spacing: 3px; }
+    @media (max-width: 450px) {
+      .History .determination-result {
+        height: 150px;
+        width: 150px;
+        padding-top: 15%;
+        margin-left: 8%; }
+        .History .determination-result p {
+          font-size: 16px; } }
+    @media (min-width: 451px) and (max-width: 775px) {
+      .History .determination-result {
+        margin-left: 14%; } }
+  .History .on-track {
+    background-color: #71f45a; }
+  .History .not-on-track {
+    background-color: #fc775f; }
+  .History .on-track-text, .History .not-on-track-text {
+    font-family: 'Chewy', cursive; }
+  @media (min-width: 451px) {
+    .History .on-track-icon, .History .not-on-track-icon {
+      font-size: 60px; } }
   .History .statistics {
     display: block;
-    height: 400px;
+    height: 300px;
     padding-left: 3%;
     padding-right: 3%; }
+    @media (max-width: 450px) {
+      .History .statistics {
+        height: 180px; } }
     .History .statistics .target-calories, .History .statistics .average-calories {
       text-align: center;
       height: 200px;
@@ -302,8 +348,11 @@ body {
         margin-top: 5px; }
       @media (max-width: 450px) {
         .History .statistics .target-calories, .History .statistics .average-calories {
-          height: 140px;
-          width: 140px; } }
+          height: 120px;
+          width: 120px;
+          padding-top: 2%; }
+          .History .statistics .target-calories h5, .History .statistics .target-calories .target-text, .History .statistics .target-calories .average-text, .History .statistics .average-calories h5, .History .statistics .average-calories .target-text, .History .statistics .average-calories .average-text {
+            font-size: 16px; } }
       @media (min-width: 451px) and (max-width: 775px) {
         .History .statistics .target-calories, .History .statistics .average-calories {
           height: 180px;
