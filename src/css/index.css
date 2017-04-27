@@ -5,7 +5,8 @@
   font-family: 'Lato', sans-serif;
   color: #253F47;
   font-size: 16px;
-  line-height: 1.25em; }
+  line-height: 1.25em;
+  letter-spacing: 0.5px; }
 
 body {
   background-color: #eaf984; }
@@ -99,6 +100,9 @@ body {
     flex-wrap: wrap;
     margin-top: 20%;
     margin-left: 3%; }
+    @media (max-width: 450px) {
+      .Home .box-container {
+        margin-top: 25%; } }
     .Home .box-container .box-button:hover {
       cursor: pointer;
       text-decoration: none; }

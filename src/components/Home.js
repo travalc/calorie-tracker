@@ -28,13 +28,13 @@ class Home extends Component {
         <div className="box-container">
           <Link className="box-link" to={'/CurrentDay'}>
             <div className="box-button">
-              <span className="button-title">Add Foods For Today</span>
+              <span className="button-title">Log Your Day</span>
               <span className="fa fa-plus button-icon"></span>
             </div>
           </Link>
           <Link className="box-link" to={'/History'}>
             <div className="box-button">
-              <span className="button-title">View Your Progress/Stats</span>
+              <span className="button-title">Track Your Stats</span>
               <span className="fa fa-line-chart button-icon"></span>
             </div>
           </Link>

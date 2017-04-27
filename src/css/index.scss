@@ -41,6 +41,7 @@ $large-min-width: 1300px;
   color: #253F47;
   font-size: 16px;
   line-height: 1.25em;
+  letter-spacing: 0.5px;
 }
 
 
@@ -188,7 +189,9 @@ body {
 
     display: flex;
     flex-wrap: wrap;
-
+    @include smartphone {
+      margin-top: 25%;
+    }
 
     margin-top: 20%;
     margin-left: 3%;
