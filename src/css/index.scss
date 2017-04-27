@@ -226,9 +226,15 @@ body {
     .box-button:hover {
       cursor: pointer;
       text-decoration: none;
+      border-color: white;
+      background-color: black;
+      .button-title, .button-icon {
+        color: white;
+      }
     }
     .box-link:hover {
       text-decoration: none;
+      color: white;
     }
     .box-link {
       margin-right: 10px;
@@ -424,7 +430,7 @@ body {
       height: 200px;
       width: 200px;
       padding-top: 4%;
-      border-radius: 50%;
+      border-radius: 20%;
       border: solid black;
       background-color: white;
       margin-top: 4%;

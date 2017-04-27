@@ -114,12 +114,12 @@ class History extends Component {
               <div className="target-calories">
                 <h5>Target</h5>
                 <span className="fa fa-bullseye target-icon"></span>
-                <span>{this.getTargetCalories()}</span>
+                <span>{this.getTargetCalories()} Calories Per Day</span>
               </div>
               <div className="average-calories">
                 <h5>Average</h5>
                 <span className="fa fa-calculator average-icon"></span>
-                <span>{this.getAverageCaloriesPerDay()}</span>
+                <span>{this.getAverageCaloriesPerDay()} Calories Per Day</span>
               </div>
             </div>
           </div>

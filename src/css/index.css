@@ -128,9 +128,14 @@ body {
         margin-top: 25%; } }
     .Home .box-container .box-button:hover {
       cursor: pointer;
-      text-decoration: none; }
+      text-decoration: none;
+      border-color: white;
+      background-color: black; }
+      .Home .box-container .box-button:hover .button-title, .Home .box-container .box-button:hover .button-icon {
+        color: white; }
     .Home .box-container .box-link:hover {
-      text-decoration: none; }
+      text-decoration: none;
+      color: white; }
     .Home .box-container .box-link {
       margin-right: 10px;
       margin-bottom: 10px;
@@ -280,7 +285,7 @@ body {
       height: 200px;
       width: 200px;
       padding-top: 4%;
-      border-radius: 50%;
+      border-radius: 20%;
       border: solid black;
       background-color: white;
       margin-top: 4%;
