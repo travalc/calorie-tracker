@@ -63,142 +63,171 @@ class CurrentDay extends Component {
     }
   }
 
+  isThisADuplicateDate(date) {
+    const history = this.props.state.history;
+    let count = 0;
+    var duplicate;
+    history.forEach(entry => {
+      if (entry.date === date) {
+        count ++;
+      }
+    });
+    count > 0 ? duplicate = true : duplicate =  false;
+    return duplicate;
+  }
+
   render() {
     console.log(this.props);
     return (
-      <div>
-        <input
-          type="date"
-          onChange={event => {
-            this.setState({
-              date: moment(event.target.value).format("MMMM Do YYYY"),
+      <div className="CurrentDay">
+        {
+          this.state.date === ''
+            ?
+              <div className="date-screen">
+                <h4>Please Select The Date</h4>
+                <input
+                  type="date"
+                  onChange={event => {
+                    const enteredDate = moment(event.target.value).format("MMMM Do YYYY")
+                    if (this.isThisADuplicateDate(enteredDate) === false) {
+                      this.setState({
+                        date: enteredDate
 
-            });
-            console.log(event.target.value);
-          }}
-        />
-        <h4>What You Have Eaten Today, {this.state.date}</h4>
-        <ManualAdd />
-        <Search />
-        <ul style={{listStyleType: 'none'}}>
-          {
-            this.props.state.currentDayFoods.foodItems.length > 0
-              ?
-                this.props.state.currentDayFoods.foodItems.map(item => {
-                  return (
-                    <li key={item.id} style={{margin: '15px'}}>
-                      <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
-                      <span style={{display: 'block'}}><strong>Servings:</strong> {item.quantity}</span>
-                      <span style={{display: 'block'}}><strong>Total Calories:</strong> {item.totalCalories}</span>
+                      });
+                    }
+                    else {
+                      alert('An entry for this date already exists');
+                    }
+                  }}
+                />
+              </div>
+            :
+              <div>
+                <h4>What You Have Eaten Today, {this.state.date}</h4>
+                <ManualAdd />
+                <Search />
+                <ul style={{listStyleType: 'none'}}>
+                  {
+                    this.props.state.currentDayFoods.foodItems.length > 0
+                      ?
+                        this.props.state.currentDayFoods.foodItems.map(item => {
+                          return (
+                            <li key={item.id} style={{margin: '15px'}}>
+                              <span style={{display: 'block'}}><strong>Name:</strong> {item.name}</span>
+                              <span style={{display: 'block'}}><strong>Servings:</strong> {item.quantity}</span>
+                              <span style={{display: 'block'}}><strong>Total Calories:</strong> {item.totalCalories}</span>
 
-                      <span
-                        className="glyphicon glyphicon-pencil"
-                        onClick={() => {
-                          this.handleOpenModal();
-                          this.setState({
-                            editItem: item,
-                            name: item.name,
-                            calories: item.calories,
-                            totalCalories: item.totalCalories,
-                            quantity: item.quantity
-                          });
-                        }}
-                      >
-                      </span>
-                      <span
-                        className="glyphicon glyphicon-remove"
-                        onClick={() => this.props.deleteFoodItem(item)}
-                        style={{marginLeft: '5px'}}
-                      >
-                      </span>
-                    </li>
-                  )
-                })
-              :
-                <li>Nothing Yet</li>
-          }
-        </ul>
-        <p><strong>Total Calories For Today:</strong> {this.props.state.currentDayFoods.totalCalories}</p>
-        <button
-          className="btn btn-success"
-          type="button"
-          onClick={() => this.addDay()}
-        >
-          Submit
-        </button>
-        <button
-          className="btn btn-danger"
-          type="button"
-          onClick={() => this.props.deleteCurrentDay()}
-        >
-          Delete All
-        </button>
+                              <span
+                                className="glyphicon glyphicon-pencil"
+                                onClick={() => {
+                                  this.handleOpenModal();
+                                  this.setState({
+                                    editItem: item,
+                                    name: item.name,
+                                    calories: item.calories,
+                                    totalCalories: item.totalCalories,
+                                    quantity: item.quantity
+                                  });
+                                }}
+                              >
+                              </span>
+                              <span
+                                className="glyphicon glyphicon-remove"
+                                onClick={() => this.props.deleteFoodItem(item)}
+                                style={{marginLeft: '5px'}}
+                              >
+                              </span>
+                            </li>
+                          )
+                        })
+                      :
+                        <li>Nothing Yet</li>
+                  }
+                </ul>
+                <p><strong>Total Calories For Today:</strong> {this.props.state.currentDayFoods.totalCalories}</p>
+                <button
+                  className="btn btn-success"
+                  type="button"
+                  onClick={() => this.addDay()}
+                >
+                  Submit
+                </button>
+                <button
+                  className="btn btn-danger"
+                  type="button"
+                  onClick={() => this.props.deleteCurrentDay()}
+                >
+                  Delete All
+                </button>
 
-      {
-        //Editing Modal
-      }
-        <ReactModal
-          isOpen={this.state.showModal}
-          contentLabel="Edit Food"
-        >
-          <span style={{display: 'block'}}>
-            <strong>Name:</strong><input className="form-control" value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
-          </span>
-          <span style={{display: 'block'}}>
-            <strong>Calories Per Serving:</strong> <input className="form-control" value={this.state.calories} onChange={event => this.setState({calories: event.target.value})}/>
-          </span>
-          <span style={{display: 'block'}}>
-            <strong>Total Calories:</strong> {this.state.calories * this.state.quantity}
-          </span>
-          <div className="form-inline">
-            <span><strong>Servings:</strong> </span>
-            <select name="servings"
-              value={this.state.quantity}
-              onChange={event => this.setState({quantity: event.target.value})}
-            >
-              <option value={0}>-</option>
-              <option value={1}>01</option>
-              <option value={2}>02</option>
-              <option value={3}>03</option>
-              <option value={4}>04</option>
-              <option value={5}>05</option>
-              <option value={6}>06</option>
-              <option value={7}>07</option>
-              <option value={8}>08</option>
-              <option value={9}>09</option>
-              <option value={10}>10</option>
-            </select>
-          </div>
-          <div style={{margin: "10px"}} className="form-inline">
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => {
-                this.editFoodItem(this.state.name, this.state.calories, this.state.quantity, this.state.editItem.id);
-                this.handleCloseModal();
-              }}
-            >
-              Save
-            </button>
-            <button
-              className="btn btn-danger"
-              type="button"
-              onClick={() => {
-                this.props.deleteFoodItem(this.state.editItem);
-                this.handleCloseModal();
-              }}
-            >
-              Delete Item
-            </button>
-            <button
-              className="btn btn-warning"
-              type="button"
-              onClick={() => this.handleCloseModal()}
-            >
-              Cancel
-            </button>
-          </div>
-        </ReactModal>
+              {
+                //Editing Modal
+              }
+                <ReactModal
+                  isOpen={this.state.showModal}
+                  contentLabel="Edit Food"
+                >
+                  <span style={{display: 'block'}}>
+                    <strong>Name:</strong><input className="form-control" value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
+                  </span>
+                  <span style={{display: 'block'}}>
+                    <strong>Calories Per Serving:</strong> <input className="form-control" value={this.state.calories} onChange={event => this.setState({calories: event.target.value})}/>
+                  </span>
+                  <span style={{display: 'block'}}>
+                    <strong>Total Calories:</strong> {this.state.calories * this.state.quantity}
+                  </span>
+                  <div className="form-inline">
+                    <span><strong>Servings:</strong> </span>
+                    <select name="servings"
+                      value={this.state.quantity}
+                      onChange={event => this.setState({quantity: event.target.value})}
+                    >
+                      <option value={0}>-</option>
+                      <option value={1}>01</option>
+                      <option value={2}>02</option>
+                      <option value={3}>03</option>
+                      <option value={4}>04</option>
+                      <option value={5}>05</option>
+                      <option value={6}>06</option>
+                      <option value={7}>07</option>
+                      <option value={8}>08</option>
+                      <option value={9}>09</option>
+                      <option value={10}>10</option>
+                    </select>
+                  </div>
+                  <div style={{margin: "10px"}} className="form-inline">
+                    <button
+                      className="btn btn-success"
+                      type="button"
+                      onClick={() => {
+                        this.editFoodItem(this.state.name, this.state.calories, this.state.quantity, this.state.editItem.id);
+                        this.handleCloseModal();
+                      }}
+                    >
+                      Save
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      type="button"
+                      onClick={() => {
+                        this.props.deleteFoodItem(this.state.editItem);
+                        this.handleCloseModal();
+                      }}
+                    >
+                      Delete Item
+                    </button>
+                    <button
+                      className="btn btn-warning"
+                      type="button"
+                      onClick={() => this.handleCloseModal()}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </ReactModal>
+              </div>
+        }
+
       </div>
     )
   }

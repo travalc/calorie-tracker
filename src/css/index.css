@@ -151,4 +151,13 @@ body {
           .Home .box-container .box-button .button-icon {
             font-size: 60px; } }
 
+/* CurrentDay */
+.CurrentDay .date-screen {
+  text-align: center;
+  margin-top: 20%; }
+  .CurrentDay .date-screen h4 {
+    font-family: 'Chewy', cursive;
+    letter-spacing: 1px;
+    font-size: 28px; }
+
 /*# sourceMappingURL=index.css.map */
