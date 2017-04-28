@@ -90,23 +90,27 @@ class App extends Component {
         {
           this.state.width <= 600 // Toggle bar is visible on small screen
             ?
-              <div className="toggle-bar">
-                {
-                  this.state.menuOpen === false //icon is a hamburger when menu is closed
-                    ?
-                      <span
-                        className="fa fa-bars toggle-icon"
-                        onClick={() => this.toggleMenu()}
-                      >
-                      </span>
-                    : //icon is an X when menu is open
-                      <span
-                        className="fa fa-times toggle-icon"
-                        onClick={() => this.toggleMenu()}
-                      >
-                      </span>
-                  }
-              </div>
+              this.props.state.profile.name !== null
+                ?
+                  <div className="toggle-bar">
+                    {
+                      this.state.menuOpen === false //icon is a hamburger when menu is closed
+                        ?
+                          <span
+                            className="fa fa-bars toggle-icon"
+                            onClick={() => this.toggleMenu()}
+                          >
+                          </span>
+                        : //icon is an X when menu is open
+                          <span
+                            className="fa fa-times toggle-icon"
+                            onClick={() => this.toggleMenu()}
+                          >
+                          </span>
+                      }
+                  </div>
+                :
+                  <div></div>
             :
               <div></div>
         }

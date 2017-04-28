@@ -570,3 +570,22 @@ body {
     }
   }
 }
+
+/* Profile */
+
+.Profile {
+  .profile-title {
+    font-family: 'Chewy', cursive;
+    font-size: 36px;
+    text-align: center;
+  }
+  .profile-content {
+  margin-right: 10%;
+  }
+  .profile-fields {
+    background-color: white;
+    width: 100%;
+    padding: 5%;
+    border: solid black;
+  }
+}

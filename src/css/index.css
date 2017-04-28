@@ -404,4 +404,17 @@ body {
       .History .past-entries {
         margin-left: 0; } }
 
+/* Profile */
+.Profile .profile-title {
+  font-family: 'Chewy', cursive;
+  font-size: 36px;
+  text-align: center; }
+.Profile .profile-content {
+  margin-right: 10%; }
+.Profile .profile-fields {
+  background-color: white;
+  width: 100%;
+  padding: 5%;
+  border: solid black; }
+
 /*# sourceMappingURL=index.css.map */
