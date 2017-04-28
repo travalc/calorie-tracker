@@ -92,6 +92,7 @@ class Today extends Component {
           isOpen={this.state.showModal}
           contentLabel="Food Selection"
         >
+          <h3 className="results-title">Results for {this.state.query}</h3>
           <ul style={{listStyleType: 'none'}}>
           {
             this.state.currentSet !== null
@@ -139,7 +140,7 @@ class Today extends Component {
                     </div>
                     <div className="form-inline">
                       <button
-                        className="btn btn-success"
+                        className="btn btn-success add-screen-button"
                         type="button"
                         onClick={() => {
                           this.addItem(this.state.selectedItem.name, this.state.selectedItem.calories, this.state.quantity);
@@ -149,7 +150,7 @@ class Today extends Component {
                         Add
                       </button>
                       <button
-                        className="btn btn-danger"
+                        className="btn btn-danger add-screen-button"
                         type="button"
                         onClick={() => this.setState({selectedItem: null})}
                       >
@@ -171,6 +172,7 @@ class Today extends Component {
             />
           </a>
           <button
+            className="btn btn-warning close-results"
             onClick={() => {
               this.handleCloseModal();
               this.setState({selectedItem: null});

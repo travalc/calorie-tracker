@@ -251,6 +251,16 @@ body {
     font-size: 15px;
     letter-spacing: 0; }
 
+.close-results {
+  margin: 10px; }
+
+.results-title {
+  text-align: left;
+  margin-left: 25%; }
+
+.add-screen-button {
+  margin: 10px; }
+
 .Search {
   text-align: center; }
   .Search .search-form {
