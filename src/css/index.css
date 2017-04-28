@@ -261,6 +261,9 @@ body {
 .add-screen-button {
   margin: 10px; }
 
+.close-modal:hover {
+  cursor: pointer; }
+
 .Search {
   text-align: center; }
   .Search .search-form {

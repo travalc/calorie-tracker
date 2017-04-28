@@ -92,6 +92,14 @@ class Today extends Component {
           isOpen={this.state.showModal}
           contentLabel="Food Selection"
         >
+          <span
+            className="close-modal glyphicon glyphicon-remove"
+            onClick={() => {
+              this.handleCloseModal();
+              this.setState({selectedItem: null});
+            }}
+          >
+          </span>
           <h3 className="results-title">Results for {this.state.query}</h3>
           <ul style={{listStyleType: 'none'}}>
           {
@@ -150,7 +158,7 @@ class Today extends Component {
                         Add
                       </button>
                       <button
-                        className="btn btn-danger add-screen-button"
+                        className="btn btn-warning add-screen-button"
                         type="button"
                         onClick={() => this.setState({selectedItem: null})}
                       >
@@ -172,7 +180,7 @@ class Today extends Component {
             />
           </a>
           <button
-            className="btn btn-warning close-results"
+            className="btn btn-danger close-results"
             onClick={() => {
               this.handleCloseModal();
               this.setState({selectedItem: null});

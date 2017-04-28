@@ -223,6 +223,14 @@ class History extends Component {
                       isOpen={this.state.showModal}
                       contentLabel="Detailed Day View"
                     >
+                      <span
+                        className="close-modal glyphicon glyphicon-remove"
+                        onClick={() => {
+                          this.handleCloseModal();
+                          this.setState({selectedItem: null});
+                        }}
+                      >
+                      </span>
                       {
                         this.state.currentItem !== null //Current item is in state? Render it in modal
                           ?
@@ -239,6 +247,13 @@ class History extends Component {
                                         <span style={{display: 'block'}}><strong>Calories Per Serving: </strong>{food.calories}</span>
                                         <span style={{display: 'block'}}><strong>Number of Servings: </strong>{food.quantity}</span>
                                         <span style={{display: 'block'}}><strong>Total Calories: </strong>{food.totalCalories}</span>
+                                        {
+                                          this.state.currentItem.foods.indexOf(food) !== this.state.currentItem.foods.length - 1 //only render hr if there are no more listings
+                                            ?
+                                              <hr />
+                                            :
+                                              <div></div>
+                                        }
                                       </li>
                                     )
                                   })

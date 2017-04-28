@@ -47,6 +47,14 @@ class ManualAdd extends Component {
           Or click here if you want to enter an item manually
         </a>
         <ReactModal isOpen={this.state.showModal} contentLabel="Add Food Manually">
+          <span
+            className="close-modal glyphicon glyphicon-remove"
+            onClick={() => {
+              this.handleCloseModal();
+              this.setState({selectedItem: null});
+            }}
+          >
+          </span>
           <h4>Please enter food name, calories per serving, and number of servings</h4>
           <div>
             <span><strong>Name: </strong></span>
@@ -82,14 +90,14 @@ class ManualAdd extends Component {
             </select>
           </div>
           <button
-            className="btn btn-success"
+            className="btn btn-success add-screen-button"
             type="button"
             onClick={() => this.addItem(this.state.name, this.state.calories, this.state.quantity)}
           >
             Add Item
           </button>
           <button
-            className="btn btn-danger"
+            className="btn btn-danger add-screen-button"
             type="button"
             onClick={() => this.handleCloseModal()}
           >
