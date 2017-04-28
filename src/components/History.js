@@ -143,7 +143,6 @@ class History extends Component {
 
   render() {
     const entries = this.props.state.history;
-    console.log(this.state.currentItem);
     return (
       <div className="History">
         <h4>Your Progress</h4>

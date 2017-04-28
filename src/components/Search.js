@@ -52,7 +52,6 @@ class Today extends Component {
     })
     .then(response => response.json())
     .then(json => {
-      console.log(json);
       let itemSet = [];
       json.hits.forEach(item => {
         const itemInfo = {

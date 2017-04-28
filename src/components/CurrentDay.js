@@ -43,7 +43,6 @@ class CurrentDay extends Component {
       quantity: quantity,
       id: id
     }
-    console.log(item);
     this.props.editItem(item);
   }
 
@@ -88,7 +87,6 @@ class CurrentDay extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="CurrentDay">
         {

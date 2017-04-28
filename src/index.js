@@ -110,7 +110,6 @@ firebaseApp.auth().onAuthStateChanged(user => {
         entries.sort((a, b) => { //sort days from newest to oldest
           return b.timeDiff - a.timeDiff;
         });
-        console.log(entries);
         store.dispatch(loadHistory(entries)); //send history to app state
       }
     })

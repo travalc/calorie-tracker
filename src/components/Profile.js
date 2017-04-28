@@ -59,8 +59,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state);
     return (
       <div className="Profile">
         <div className="profile-content">
@@ -76,7 +74,7 @@ class Profile extends Component {
               <label>Name:</label>
               <input
                 className="form-control profile-input profile-input-field"
-                placeholder="First + Last"
+                placeholder="Your name"
                 value={this.state.name}
                 onChange={event => this.setState({name: event.target.value})}
               />
